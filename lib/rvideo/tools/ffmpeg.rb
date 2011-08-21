@@ -249,7 +249,7 @@ module RVideo
           raise TranscoderError, "Could not write output file to #{@output_file}"
         end
           
-        full_details = /Press .* to stop encoding\n(.*)/m.match(result)
+        full_details = /Press .* to stop.*?\n(.*)/m.match(result)
         raise TranscoderError, "Unexpected result details (#{result})" if full_details.nil?
         details = full_details[1].strip.gsub(/\s*\n\s*/," - ")
         
