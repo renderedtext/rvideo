@@ -31,7 +31,7 @@ module RVideo
       end
       
       it "should call parse_result on execute, with a ffmpeg result string" do
-        @ffmpeg.should_receive(:parse_result).once.with /\AFFmpeg version/
+        @ffmpeg.should_receive(:parse_result).once.with /\Affmpeg version/
         @ffmpeg.execute
       end
       
