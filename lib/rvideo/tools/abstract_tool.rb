@@ -1,3 +1,5 @@
+require 'active_support/core_ext/string/inflections'
+
 module RVideo # :nodoc:
   module Tools  # :nodoc:
 
@@ -19,7 +21,6 @@ module RVideo # :nodoc:
           raise e
         end
       end
-
 
       module InstanceMethods
         # Defines abstract methods in the convention of "format_#{attribute}"
