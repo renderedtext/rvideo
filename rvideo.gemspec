@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name = %q{rvideo}
   s.version = "0.9.6"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
+  s.required_rubygems_version = ">= 1.3.6"
   s.authors = ["Peter Boling, Jonathan Dahl (Slantwise Design), Seth Thomas Rasmussen"]
   s.date = %q{2010-05-17}
   s.description = %q{Inspect and transcode video and audio files.}
@@ -18,19 +18,9 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{Inspect and transcode video and audio files.}
 
-  if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
-    s.specification_version = 3
+  s.add_runtime_dependency('activesupport', [">= 0"])
+  s.add_runtime_dependency('open4', [">= 0"])  
+  s.add_development_dependency('rspec', [">= 0"])
+  s.add_development_dependency('echoe', [">= 0"])
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<activesupport>, [">= 0"])
-      s.add_development_dependency(%q<rspec>, [">= 0"])
-    else
-      s.add_dependency(%q<activesupport>, [">= 0"])
-      s.add_dependency(%q<rspec>, [">= 0"])
-    end
-  else
-    s.add_dependency(%q<activesupport>, [">= 0"])
-    s.add_dependency(%q<rspec>, [">= 0"])
-  end
 end
