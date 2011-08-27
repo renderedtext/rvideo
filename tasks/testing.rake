@@ -1,22 +1,15 @@
-begin
-  require "spec/rake/spectask"
-rescue LoadError
-  puts "To use rspec for testing you must install rspec gem:"
-  puts "$ sudo gem install rspec"
-  exit
-end
+require "rspec"
+require "rspec/core/rake_task"
 
 namespace :spec do
   desc "Run Unit Specs"
-  Spec::Rake::SpecTask.new("units") do |t|
-    t.spec_files = FileList['spec/units/**/*.rb']
-    t.spec_opts = %w( --color )
+  RSpec::Core::RakeTask.new(:units) do |spec|
+    spec.pattern = "spec/units/**/*.rb"
   end
-
+  
   desc "Run Integration Specs"
-  Spec::Rake::SpecTask.new("integrations") do |t|
-    t.spec_files = FileList['spec/integrations/**/*.rb']
-    t.spec_opts = %w( --color )
+  RSpec::Core::RakeTask.new(:integrations) do |spec|
+    spec.pattern = "spec/integrations/**/*.rb"
   end
 end
 
