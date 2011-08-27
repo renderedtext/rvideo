@@ -1,3 +1,6 @@
+require 'active_support/core_ext/class/attribute_accessors'
+require 'active_support/core_ext/hash/indifferent_access'
+
 module RVideo
   module Tools
     class Ffmpeg
@@ -83,7 +86,7 @@ module RVideo
       end
       
       def format_video_quality(params={})
-        bitrate = params[:video_bit_rate].blank? ? nil : params[:video_bit_rate]
+        bitrate = params[:video_bit_rate].nil? ? nil : params[:video_bit_rate]
         
         params.merge! get_original_fps unless params[:fps]
         
