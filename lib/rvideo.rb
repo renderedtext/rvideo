@@ -1,13 +1,8 @@
-$LOAD_PATH.unshift File.dirname(__FILE__)
-
 # core extensions
 require 'rvideo/float'
 require 'rvideo/string'
 
-# gems
-require 'rubygems'
-require 'active_support'
-require 'open4'
+require 'logger'
 
 # rvideo
 require 'rvideo/command_executor'

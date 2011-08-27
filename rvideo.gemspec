@@ -18,7 +18,9 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{Inspect and transcode video and audio files.}
 
-  s.add_runtime_dependency('activesupport', [">= 0"])
+  s.add_runtime_dependency('active_support', [">= 3.0.0"])
+  s.add_runtime_dependency('i18n', [">= 0"])
+  
   s.add_runtime_dependency('open4', [">= 0"])  
   s.add_development_dependency('rspec', [">= 0"])
   s.add_development_dependency('echoe', [">= 0"])
