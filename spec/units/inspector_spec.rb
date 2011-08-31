@@ -28,6 +28,7 @@ module RVideo
       file.ffmpeg_build.should == "built on Mar 29 2007 17:18:04, gcc: 4.0.1 (Apple Computer, Inc. build 5367)"
       file.raw_metadata.should =~ /^Input #/
     end
+
     
     it "should read ffmpeg build data successfully (with a compiled build)" do
       file = Inspector.new(:raw_response => ffmpeg(:osx_intel_1))
@@ -37,6 +38,16 @@ module RVideo
       file.ffmpeg_build.should == "built on Apr 15 2006 04:58:19, gcc: 4.0.1 (Apple Computer, Inc. build 5250)"
       file.raw_metadata.should =~ /^Input #/
     end
+    
+    it "should read ffmpeg build data successfully (with a brew 0.8.2 build)" do
+      file = Inspector.new(:raw_response => ffmpeg('brew_0_8_2'))
+      file.ffmpeg_configuration.should == "--prefix=/usr/local/Cellar/ffmpeg/0.8.2 --enable-shared --enable-gpl --enable-version3 --enable-nonfree --enable-hardcoded-tables --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libxvid --cc=clang"
+      file.ffmpeg_version.should == "0.8.2"
+      file.ffmpeg_libav.should == ["libavutil    51.  9. 1 / 51.  9. 1", "libavcodec   53.  7. 0 / 53.  7. 0", "libavformat  53.  4. 0 / 53.  4. 0", "libavdevice  53.  1. 1 / 53.  1. 1", "libavfilter   2. 23. 0 /  2. 23. 0", "libswscale    2.  0. 0 /  2.  0. 0", "libpostproc  51.  2. 0 / 51.  2. 0"]
+      file.ffmpeg_build.should == "built on Aug 31 2011 10:57:40 with clang 2.1 (tags/Apple/clang-163.7.1)"
+      file.raw_metadata.should =~ /^Input #/
+    end
+    
     
     it 'should handle "\n" newline characters' do
       raw_response = "FFmpeg version SVN-r10656, Copyright (c) 2000-2007 Fabrice Bellard, et al.
