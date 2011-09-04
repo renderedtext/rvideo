@@ -1,608 +1,356 @@
-# TODO descriptive names for these would be nice..
+---
+0.8.2-OSX-10.7: 
+  simple_h264: |
+    ffmpeg version 0.8.2, Copyright (c) 2000-2011 the FFmpeg developers
+      built on Sep  4 2011 12:05:01 with clang 2.1 (tags/Apple/clang-163.7.1)
+      configuration: --prefix=/usr/local/Cellar/ffmpeg/0.8.2 --enable-shared --enable-gpl --enable-version3 --enable-nonfree --enable-hardcoded-tables --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libxvid --cc=clang
+      libavutil    51.  9. 1 / 51.  9. 1
+      libavcodec   53.  7. 0 / 53.  7. 0
+      libavformat  53.  4. 0 / 53.  4. 0
+      libavdevice  53.  1. 1 / 53.  1. 1
+      libavfilter   2. 23. 0 /  2. 23. 0
+      libswscale    2.  0. 0 /  2.  0. 0
+      libpostproc  51.  2. 0 / 51.  2. 0
+    [avi @ 0x7fe8bb848200] non-interleaved AVI
+    Input #0, avi, from '/Users/gregory/Documents/open_source/rvideo/tasks/../spec/files/boat.avi':
+      Metadata:
+        creation_time   : 2005-07-24/ 14:58  
+        encoder         : CASIO EX-Z55                  
+      Duration: 00:00:15.16, start: 0.000000, bitrate: 2078 kb/s
+        Stream #0.0: Video: mjpeg, yuvj420p, 320x240, 15.10 tbr, 15.10 tbn, 15.10 tbc
+        Stream #0.1: Audio: adpcm_ima_wav, 11025 Hz, 1 channels, s16, 44 kb/s
+    [buffer @ 0x7fe8bb418c40] w:320 h:240 pixfmt:yuvj420p tb:1/1000000 sar:0/1 sws_param:
+    [libx264 @ 0x7fe8bb85aa00] using cpu capabilities: MMX2 SSE2Fast SSSE3 FastShuffle SSE4.2 AVX
+    [libx264 @ 0x7fe8bb85aa00] profile High, level 2.0
+    [libx264 @ 0x7fe8bb85aa00] 264 - core 115 - H.264/MPEG-4 AVC codec - Copyleft 2003-2011 - http://www.videolan.org/x264.html - options: cabac=1 ref=2 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=6 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=1 keyint=250 keyint_min=15 scenecut=40 intra_refresh=0 rc_lookahead=30 rc=abr mbtree=1 bitrate=500 ratetol=1.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+    Output #0, mp4, to '/var/folders/pb/2rjc9l6n2fj893l8b7p6pxx80000gn/T/d20110904-63028-qc8kz9/tmp479608.mp4':
+      Metadata:
+        creation_time   : 2005-07-24/ 14:58  
+        encoder         : Lavf53.4.0
+        Stream #0.0: Video: libx264, yuvj420p, 320x240, q=2-31, 500 kb/s, 500k tbn, 15.10 tbc
+        Stream #0.1: Audio: libfaac, 44100 Hz, 2 channels, s16, 64 kb/s
+    Stream mapping:
+      Stream #0.0 -> #0.0
+      Stream #0.1 -> #0.1
+    Press [q] to stop, [?] for help
+    frame=   63 fps=  0 q=30.0 size=     145kB time=00:00:01.98 bitrate= 599.8kbits/s    
+    frame=  100 fps= 98 q=30.0 size=     305kB time=00:00:04.43 bitrate= 563.9kbits/s    
+    frame=  138 fps= 91 q=30.0 size=     455kB time=00:00:06.95 bitrate= 535.8kbits/s    
+    frame=  179 fps= 88 q=27.0 size=     593kB time=00:00:09.66 bitrate= 502.5kbits/s    
+    frame=  213 fps= 84 q=29.0 size=     784kB time=00:00:11.91 bitrate= 538.8kbits/s    
+    frame=  229 fps= 74 q=29.0 Lsize=     993kB time=00:00:15.03 bitrate= 541.3kbits/s    
+    video:909kB audio:74kB global headers:0kB muxing overhead 0.989353%
+    frame I:2     Avg QP:22.93  size: 11442
+    [libx264 @ 0x7fe8bb85aa00] frame P:131   Avg QP:27.49  size:  5137
+    [libx264 @ 0x7fe8bb85aa00] frame B:96    Avg QP:28.85  size:  2446
+    [libx264 @ 0x7fe8bb85aa00] consecutive B-frames: 16.2% 83.8%  0.0%  0.0%
+    [libx264 @ 0x7fe8bb85aa00] mb I  I16..4:  0.8% 98.3%  0.8%
+    [libx264 @ 0x7fe8bb85aa00] mb P  I16..4:  1.1% 29.6%  0.4%  P16..4: 36.4% 17.2%  6.8%  0.0%  0.0%    skip: 8.5%
+    [libx264 @ 0x7fe8bb85aa00] mb B  I16..4:  0.6% 15.8%  0.2%  B16..8: 33.5% 15.8%  1.6%  direct:18.9%  skip:13.7%  L0:18.1% L1:25.4% BI:56.5%
+    [libx264 @ 0x7fe8bb85aa00] final ratefactor: 25.26
+    [libx264 @ 0x7fe8bb85aa00] 8x8 transform intra:95.2% inter:72.1%
+    [libx264 @ 0x7fe8bb85aa00] coded y,uvDC,uvAC intra: 82.1% 73.0% 26.0% inter: 48.0% 40.6% 1.6%
+    [libx264 @ 0x7fe8bb85aa00] i16 v,h,dc,p: 22% 33% 17% 28%
+    [libx264 @ 0x7fe8bb85aa00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu:  4% 43% 29%  2%  3%  1%  6%  2% 10%
+    [libx264 @ 0x7fe8bb85aa00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 12% 29% 23%  4%  4%  3%  6%  5% 13%
+    [libx264 @ 0x7fe8bb85aa00] i8c dc,h,v,p: 66% 18% 13%  3%
+    [libx264 @ 0x7fe8bb85aa00] Weighted P-Frames: Y:0.8% UV:0.0%
+    [libx264 @ 0x7fe8bb85aa00] ref P L0: 85.4% 14.6%
+    [libx264 @ 0x7fe8bb85aa00] ref B L0: 94.0%  6.0%
+    [libx264 @ 0x7fe8bb85aa00] kb/s:490.98
 
-result1: |
-  FFmpeg version CVS, Copyright (c) 2000-2004 Fabrice Bellard
-  Mac OSX universal build for ffmpegX
-    configuration:  --enable-memalign-hack --enable-mp3lame --enable-gpl --disable-vhook --disable-ffplay --disable-ffserver --enable-a52 --enable-xvid --enable-faac --enable-faad --enable-amr_nb --enable-amr_wb --enable-pthreads --enable-x264 
-    libavutil version: 49.0.0
-    libavcodec version: 51.9.0
-    libavformat version: 50.4.0
-    built on Apr 15 2006 04:58:19, gcc: 4.0.1 (Apple Computer, Inc. build 5250)
+  broken_command: |
+    ffmpeg version 0.8.2, Copyright (c) 2000-2011 the FFmpeg developers
+      built on Sep  4 2011 12:05:01 with clang 2.1 (tags/Apple/clang-163.7.1)
+      configuration: --prefix=/usr/local/Cellar/ffmpeg/0.8.2 --enable-shared --enable-gpl --enable-version3 --enable-nonfree --enable-hardcoded-tables --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libxvid --cc=clang
+      libavutil    51.  9. 1 / 51.  9. 1
+      libavcodec   53.  7. 0 / 53.  7. 0
+      libavformat  53.  4. 0 / 53.  4. 0
+      libavdevice  53.  1. 1 / 53.  1. 1
+      libavfilter   2. 23. 0 /  2. 23. 0
+      libswscale    2.  0. 0 /  2.  0. 0
+      libpostproc  51.  2. 0 / 51.  2. 0
+    [avi @ 0x7fbb74048200] non-interleaved AVI
+    Input #0, avi, from '/Users/gregory/Documents/open_source/rvideo/tasks/../spec/files/boat.avi':
+      Metadata:
+        creation_time   : 2005-07-24/ 14:58  
+        encoder         : CASIO EX-Z55                  
+      Duration: 00:00:15.16, start: 0.000000, bitrate: 2078 kb/s
+        Stream #0.0: Video: mjpeg, yuvj420p, 320x240, 15.10 tbr, 15.10 tbn, 15.10 tbc
+        Stream #0.1: Audio: adpcm_ima_wav, 11025 Hz, 1 channels, s16, 44 kb/s
+    [NULL @ 0x7fbb74042000] Unable to find a suitable output format for '/var/folders/pb/2rjc9l6n2fj893l8b7p6pxx80000gn/T/d20110904-63028-qc8kz9/tmp741203.mp4.foo'
+    /var/folders/pb/2rjc9l6n2fj893l8b7p6pxx80000gn/T/d20110904-63028-qc8kz9/tmp741203.mp4.foo: Invalid argument
 
-  Seems that stream 1 comes from film source: 600.00 (600/1) -> 59.75 (239/4)
-  Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'jobjob2.mov':
-    Duration: 00:01:09.0, start: 0.000000, bitrate: 28847 kb/s
-    Stream #0.0(eng): Audio: aac, 44100 Hz, stereo
-    Stream #0.1(eng), 59.75 fps(r): Video: dvvideo, yuv411p, 720x480
-  Stream mapping:
-    Stream #0.1 -> #0.0
-    Stream #0.0 -> #0.1
-  Press [q] to stop encoding
-  frame= 4126 q=31.0 Lsize=    5917kB time=69.1 bitrate= 702.0kbits/s    
-  video:2417kB audio:540kB global headers:0kB muxing overhead 100.140277%
-  
-result2: |
-  FFmpeg version CVS, Copyright (c) 2000-2004 Fabrice Bellard
-  Mac OSX universal build for ffmpegX
-    configuration:  --enable-memalign-hack --enable-mp3lame --enable-gpl --disable-vhook --disable-ffplay --disable-ffserver --enable-a52 --enable-xvid --enable-faac --enable-faad --enable-amr_nb --enable-amr_wb --enable-pthreads --enable-x264 
-    libavutil version: 49.0.0
-    libavcodec version: 51.9.0
-    libavformat version: 50.4.0
-    built on Apr 15 2006 04:58:19, gcc: 4.0.1 (Apple Computer, Inc. build 5250)
-  Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/jon/code/spinoza/rvideo/config/../spec/files/kites.mp4':
-    Duration: 00:00:19.6, start: 0.000000, bitrate: 98 kb/s
-    Stream #0.0(und), 10.00 fps(r): Video: mpeg4, yuv420p, 176x144
-    Stream #0.1(und): Audio: amr_nb, 8000 Hz, mono
-  Output #0, avi, to '/Users/jon/code/spinoza/rvideo/config/../tmp/kites-transcoded.avi':
-    Stream #0.0, 29.97 fps(c): Video: xvid, yuv420p, 320x240, q=2-31, 200 kb/s
-    Stream #0.1: Audio: mp3, 44100 Hz, mono, 64 kb/s
-  Stream mapping:
-    Stream #0.0 -> #0.0
-    Stream #0.1 -> #0.1
-  Press [q] to stop encoding
-  frame=  584 q=6.0 Lsize=     708kB time=19.5 bitrate= 297.8kbits/s    
-  video:49kB audio:153kB global headers:0kB muxing overhead 250.444444%
-  
-result3: |
-  FFmpeg version CVS, Copyright (c) 2000-2004 Fabrice Bellard
-  Mac OSX universal build for ffmpegX
-    configuration:  --enable-memalign-hack --enable-mp3lame --enable-gpl --disable-vhook --disable-ffplay --disable-ffserver --enable-a52 --enable-xvid --enable-faac --enable-faad --enable-amr_nb --enable-amr_wb --enable-pthreads --enable-x264 
-    libavutil version: 49.0.0
-    libavcodec version: 51.9.0
-    libavformat version: 50.4.0
-    built on Apr 15 2006 04:58:19, gcc: 4.0.1 (Apple Computer, Inc. build 5250)
-  Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/jon/code/spinoza/rvideo/config/../spec/files/kites.mp4':
-    Duration: 00:00:19.6, start: 0.000000, bitrate: 98 kb/s
-    Stream #0.0(und), 10.00 fps(r): Video: mpeg4, yuv420p, 176x144
-    Stream #0.1(und): Audio: amr_nb, 8000 Hz, mono
-  Output #0, avi, to '/Users/jon/code/spinoza/rvideo/config/../tmp/kites-transcoded.avi':
-    Stream #0.0, 29.97 fps(c): Video: xvid, yuv420p, 320x240, q=2-31, 200 kb/s
-    Stream #0.1: Audio: mp3, 44100 Hz, mono, 64 kb/s
-  Stream mapping:
-    Stream #0.0 -> #0.0
-    Stream #0.1 -> #0.1
-  Press [q] to stop encoding
-  frame=  273 fps= 31 q=10.0 Lsize=     398kB time=5.9 bitrate= 551.8kbits/s
-  video:284kB audio:92kB global headers:0kB muxing overhead 5.723981%
-  
-result4: |
-  FFmpeg version SVN-rUNKNOWN, Copyright (c) 2000-2007 Fabrice Bellard, et al.
-    configuration: --prefix=/opt/local --prefix=/opt/local --disable-vhook --mandir=/opt/local/share/man --enable-shared --enable-pthreads --enable-libmp3lame --enable-gpl --enable-libfaac --enable-libfaad --enable-xvid --enable-x264 
-    libavutil version: 49.4.0
-    libavcodec version: 51.40.4
-    libavformat version: 51.12.1
-    built on Sep 19 2007 11:30:28, gcc: 4.0.1 (Apple Computer, Inc. build 5367)
-  Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/Eric/Projects/rvidtest/rvideo/report/input_files/jobjob.mov': 
-    Duration: 00:01:12.0, start: 0.000000, bitrate: 972 kb/s
-    Stream #0.0(eng): Video: mpeg4, yuv420p, 512x384, 29.97 fps(r)
-    Stream #0.1(eng): Audio: mp3, 48000 Hz, stereo
-  Output #0, mp3, to '/Users/Eric/Projects/rvidtest/rvideo/report/generated_reports/62/output_files/jobjob_mov/private_mp3.mp3': 
-    Stream #0.0: Audio: mp3, 48000 Hz, stereo, 0 kb/s
-  Stream mapping:
-    Stream #0.1 -> #0.0
-  Press [q] to stop encoding
-  mdb:94, lastbuf:0 skipping granule 0
-  size=    1080kB time=69.1 bitrate= 128.0kbits /s    
-  video:0kB audio:1080kB global headers:0kB muxing overhead 0.002893%
+  missing_input_file: |
+    ffmpeg version 0.8.2, Copyright (c) 2000-2011 the FFmpeg developers
+      built on Sep  4 2011 12:05:01 with clang 2.1 (tags/Apple/clang-163.7.1)
+      configuration: --prefix=/usr/local/Cellar/ffmpeg/0.8.2 --enable-shared --enable-gpl --enable-version3 --enable-nonfree --enable-hardcoded-tables --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libxvid --cc=clang
+      libavutil    51.  9. 1 / 51.  9. 1
+      libavcodec   53.  7. 0 / 53.  7. 0
+      libavformat  53.  4. 0 / 53.  4. 0
+      libavdevice  53.  1. 1 / 53.  1. 1
+      libavfilter   2. 23. 0 /  2. 23. 0
+      libswscale    2.  0. 0 /  2.  0. 0
+      libpostproc  51.  2. 0 / 51.  2. 0
+    missingfile.avi: No such file or directory
 
-###
+  android: |
+    ffmpeg version 0.8.2, Copyright (c) 2000-2011 the FFmpeg developers
+      built on Sep  4 2011 12:05:01 with clang 2.1 (tags/Apple/clang-163.7.1)
+      configuration: --prefix=/usr/local/Cellar/ffmpeg/0.8.2 --enable-shared --enable-gpl --enable-version3 --enable-nonfree --enable-hardcoded-tables --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libxvid --cc=clang
+      libavutil    51.  9. 1 / 51.  9. 1
+      libavcodec   53.  7. 0 / 53.  7. 0
+      libavformat  53.  4. 0 / 53.  4. 0
+      libavdevice  53.  1. 1 / 53.  1. 1
+      libavfilter   2. 23. 0 /  2. 23. 0
+      libswscale    2.  0. 0 /  2.  0. 0
+      libpostproc  51.  2. 0 / 51.  2. 0
+    [avi @ 0x7f8241048200] non-interleaved AVI
+    Input #0, avi, from '/Users/gregory/Documents/open_source/rvideo/tasks/../spec/files/boat.avi':
+      Metadata:
+        creation_time   : 2005-07-24/ 14:58  
+        encoder         : CASIO EX-Z55                  
+      Duration: 00:00:15.16, start: 0.000000, bitrate: 2078 kb/s
+        Stream #0.0: Video: mjpeg, yuvj420p, 320x240, 15.10 tbr, 15.10 tbn, 15.10 tbc
+        Stream #0.1: Audio: adpcm_ima_wav, 11025 Hz, 1 channels, s16, 44 kb/s
+    Incompatible pixel format 'yuvj420p' for codec 'mpeg4', auto-selecting format 'yuv420p'
+    [buffer @ 0x7f8240c18fa0] w:320 h:240 pixfmt:yuvj420p tb:1/1000000 sar:0/1 sws_param:
+    [scale @ 0x7f8240c19e60] w:320 h:240 fmt:yuvj420p -> w:400 h:300 fmt:yuv420p flags:0x4
+    Output #0, mp4, to '/var/folders/pb/2rjc9l6n2fj893l8b7p6pxx80000gn/T/d20110904-63028-qc8kz9/tmp101428.mp4':
+      Metadata:
+        creation_time   : 2005-07-24/ 14:58  
+        encoder         : Lavf53.4.0
+        Stream #0.0: Video: mpeg4, yuv420p, 400x300, q=2-31, 436 kb/s, 25 tbn, 25 tbc
+        Stream #0.1: Audio: libfaac, 48000 Hz, 1 channels, s16, 48 kb/s
+    Stream mapping:
+      Stream #0.0 -> #0.0
+      Stream #0.1 -> #0.1
+    Press [q] to stop, [?] for help
+    frame=  275 fps=  0 q=9.4 size=     660kB time=00:00:10.92 bitrate= 494.7kbits/s dup=108 drop=0    
+    frame=  377 fps=  0 q=6.2 Lsize=     911kB time=00:00:15.08 bitrate= 494.7kbits/s dup=148 drop=0    
+    video:812kB audio:89kB global headers:0kB muxing overhead 1.077030%
 
-amr_nb_not_supported: |
-  Unexpected result details (FFmpeg version SVN-r9102, Copyright (c) 2000-2007 Fabrice Bellard, et al. configuration: --prefix=/opt/local --prefix=/opt/local --disable-vhook --mandir=/opt/local/share/man --enable-shared --enable-pthreads --disable-mmx --enable-gpl --enable-libmp3lame --enable-libogg --enable-libvorbis --enable-libtheora --enable-libfaac --enable-libfaad --enable-xvid --enable-x264 --enable-liba52 libavutil version: 49.4.0 libavcodec version: 51.40.4 libavformat version: 51.12.1 built on Dec 20 2007 13:49:31, gcc: 4.0.1 (Apple Inc. build 5465) Seems stream 0 codec frame rate differs from container frame rate: 30000.00 (30000/1) -> 29.97 (30000/1001) Input #0, avi, from '/Users/swd/Sites/worker/tmp/22/1989-Onboard-Hungaroring-Piquet.avi': Duration: 00:01:37.3, start: 0.000000, bitrate: 1393 kb/s Stream #0.0: Video: mpeg4, yuv420p, 512x384, 29.97 fps(r) Stream #0.1: Audio: mp3, 24000 Hz, stereo, 40 kb/s Unknown codec 'amr_nb' )
+  output_has_no_streams: |
+    ffmpeg version 0.8.2, Copyright (c) 2000-2011 the FFmpeg developers
+      built on Sep  4 2011 12:05:01 with clang 2.1 (tags/Apple/clang-163.7.1)
+      configuration: --prefix=/usr/local/Cellar/ffmpeg/0.8.2 --enable-shared --enable-gpl --enable-version3 --enable-nonfree --enable-hardcoded-tables --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libxvid --cc=clang
+      libavutil    51.  9. 1 / 51.  9. 1
+      libavcodec   53.  7. 0 / 53.  7. 0
+      libavformat  53.  4. 0 / 53.  4. 0
+      libavdevice  53.  1. 1 / 53.  1. 1
+      libavfilter   2. 23. 0 /  2. 23. 0
+      libswscale    2.  0. 0 /  2.  0. 0
+      libpostproc  51.  2. 0 / 51.  2. 0
+    [avi @ 0x7fe172848200] non-interleaved AVI
+    Input #0, avi, from '/Users/gregory/Documents/open_source/rvideo/tasks/../spec/files/boat.avi':
+      Metadata:
+        creation_time   : 2005-07-24/ 14:58  
+        encoder         : CASIO EX-Z55                  
+      Duration: 00:00:15.16, start: 0.000000, bitrate: 2078 kb/s
+        Stream #0.0: Video: mjpeg, yuvj420p, 320x240, 15.10 tbr, 15.10 tbn, 15.10 tbc
+        Stream #0.1: Audio: adpcm_ima_wav, 11025 Hz, 1 channels, s16, 44 kb/s
+    Output #0, mp4, to '/var/folders/pb/2rjc9l6n2fj893l8b7p6pxx80000gn/T/d20110904-63028-qc8kz9/tmp640519.mp4':
+    Output file #0 does not contain any stream
 
-missing_command: |
-  FFmpeg version CVS, Copyright (c) 2000-2004 Fabrice Bellard
-  Mac OSX universal build for ffmpegX
-    configuration:  --enable-memalign-hack --enable-mp3lame --enable-gpl --disable-vhook --disable-ffplay --disable-ffserver --enable-a52 --enable-xvid --enable-faac --enable-faad --enable-amr_nb --enable-amr_wb --enable-pthreads --enable-x264 
-    libavutil version: 49.0.0
-    libavcodec version: 51.9.0
-    libavformat version: 50.4.0
-    built on Apr 15 2006 04:58:19, gcc: 4.0.1 (Apple Computer, Inc. build 5250)
-  usage: ffmpeg [[infile options] -i infile]... {[outfile options] outfile}...
-  Hyper fast Audio and Video encoder
+  amr_nb_not_supported: |
+    ffmpeg version 0.8.2, Copyright (c) 2000-2011 the FFmpeg developers
+      built on Sep  4 2011 12:05:01 with clang 2.1 (tags/Apple/clang-163.7.1)
+      configuration: --prefix=/usr/local/Cellar/ffmpeg/0.8.2 --enable-shared --enable-gpl --enable-version3 --enable-nonfree --enable-hardcoded-tables --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libxvid --cc=clang
+      libavutil    51.  9. 1 / 51.  9. 1
+      libavcodec   53.  7. 0 / 53.  7. 0
+      libavformat  53.  4. 0 / 53.  4. 0
+      libavdevice  53.  1. 1 / 53.  1. 1
+      libavfilter   2. 23. 0 /  2. 23. 0
+      libswscale    2.  0. 0 /  2.  0. 0
+      libpostproc  51.  2. 0 / 51.  2. 0
+    [avi @ 0x7fa002048200] non-interleaved AVI
+    Input #0, avi, from '/Users/gregory/Documents/open_source/rvideo/tasks/../spec/files/boat.avi':
+      Metadata:
+        creation_time   : 2005-07-24/ 14:58  
+        encoder         : CASIO EX-Z55                  
+      Duration: 00:00:15.16, start: 0.000000, bitrate: 2078 kb/s
+        Stream #0.0: Video: mjpeg, yuvj420p, 320x240, 15.10 tbr, 15.10 tbn, 15.10 tbc
+        Stream #0.1: Audio: adpcm_ima_wav, 11025 Hz, 1 channels, s16, 44 kb/s
+    WARNING: The bitrate parameter is set too low. It takes bits/s as argument, not kbits/s
+    Unknown encoder 'amr_nb'
 
-  Main options:
-  -L                  show license
-  -h                  show help
-  -version            show version
-  -formats            show available formats, codecs, protocols, ...
-  -f fmt              force format
-  -img img_fmt        force image format
-  -i filename         input file name
-  -y                  overwrite output files
-  -t duration         set the recording time
-  -fs limit_size      set the limit file size
-  -ss time_off        set the start time offset
-  -itsoffset time_off  set the input ts offset
-  -title string       set the title
-  -timestamp time     set the timestamp
-  -author string      set the author
-  -copyright string   set the copyright
-  -comment string     set the comment
-  -v verbose          control amount of logging
-  -target type        specify target file type (\"vcd\", \"svcd\", \"dvd\", \"dv\", \"dv50\", \pal-vcd\", \"ntsc-svcd\", ...)
-  -dframes number     set the number of data frames to record
-  -scodec codec       force subtitle codec ('copy' to copy stream)
-  -newsubtitle        add a new subtitle stream to the current output stream
-  -slang code         set the ISO 639 language code (3 letters) of the current subtitle stream
+  missing_command: |+
+    ffmpeg version 0.8.2, Copyright (c) 2000-2011 the FFmpeg developers
+      built on Sep  4 2011 12:05:01 with clang 2.1 (tags/Apple/clang-163.7.1)
+      configuration: --prefix=/usr/local/Cellar/ffmpeg/0.8.2 --enable-shared --enable-gpl --enable-version3 --enable-nonfree --enable-hardcoded-tables --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libxvid --cc=clang
+      libavutil    51.  9. 1 / 51.  9. 1
+      libavcodec   53.  7. 0 / 53.  7. 0
+      libavformat  53.  4. 0 / 53.  4. 0
+      libavdevice  53.  1. 1 / 53.  1. 1
+      libavfilter   2. 23. 0 /  2. 23. 0
+      libswscale    2.  0. 0 /  2.  0. 0
+      libpostproc  51.  2. 0 / 51.  2. 0
+    Use -h to get full help or, even better, run 'man ffmpeg'
+    Hyper fast Audio and Video encoder
+    usage: ffmpeg [options] [[infile options] -i infile]... {[outfile options] outfile}...
+    
+  unwritable_stream: |
+    ffmpeg version 0.8.2, Copyright (c) 2000-2011 the FFmpeg developers
+      built on Sep  4 2011 12:05:01 with clang 2.1 (tags/Apple/clang-163.7.1)
+      configuration: --prefix=/usr/local/Cellar/ffmpeg/0.8.2 --enable-shared --enable-gpl --enable-version3 --enable-nonfree --enable-hardcoded-tables --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libxvid --cc=clang
+      libavutil    51.  9. 1 / 51.  9. 1
+      libavcodec   53.  7. 0 / 53.  7. 0
+      libavformat  53.  4. 0 / 53.  4. 0
+      libavdevice  53.  1. 1 / 53.  1. 1
+      libavfilter   2. 23. 0 /  2. 23. 0
+      libswscale    2.  0. 0 /  2.  0. 0
+      libpostproc  51.  2. 0 / 51.  2. 0
+    [avi @ 0x7fded3848200] non-interleaved AVI
+    Input #0, avi, from '/Users/gregory/Documents/open_source/rvideo/tasks/../spec/files/boat.avi':
+      Metadata:
+        creation_time   : 2005-07-24/ 14:58  
+        encoder         : CASIO EX-Z55                  
+      Duration: 00:00:15.16, start: 0.000000, bitrate: 2078 kb/s
+        Stream #0.0: Video: mjpeg, yuvj420p, 320x240, 15.10 tbr, 15.10 tbn, 15.10 tbc
+        Stream #0.1: Audio: adpcm_ima_wav, 11025 Hz, 1 channels, s16, 44 kb/s
+    Incompatible pixel format 'yuvj420p' for codec 'flv', auto-selecting format 'yuv420p'
+    [buffer @ 0x102319660] w:320 h:240 pixfmt:yuvj420p tb:1/1000000 sar:0/1 sws_param:
+    [buffersink @ 0x102319a40] auto-inserting filter 'auto-inserted scaler 0' between the filter 'src' and the filter 'out'
+    [scale @ 0x102319d40] w:320 h:240 fmt:yuvj420p -> w:320 h:240 fmt:yuv420p flags:0x4
+    [libmp3lame @ 0x7fded3860600] flv does not support that sample rate, choose from (44100, 22050, 11025).
+    Output #0, flv, to '/var/folders/pb/2rjc9l6n2fj893l8b7p6pxx80000gn/T/d20110904-63028-qc8kz9/tmp831275.mp4.flv':
+      Metadata:
+        creation_time   : 2005-07-24/ 14:58  
+        encoder         : Lavf53.4.0
+        Stream #0.0: Video: flv, yuv420p, 320x240, q=2-31, 200 kb/s, 1k tbn, 15.10 tbc
+        Stream #0.1: Audio: libmp3lame, 48000 Hz, 1 channels, s16, 64 kb/s
+    Stream mapping:
+      Stream #0.0 -> #0.0
+      Stream #0.1 -> #0.1
+    Could not write header for output file #0 (incorrect codec parameters ?)
 
-  Video options:
-  -b bitrate          set video bitrate (in kbit/s)
-  -vframes number     set the number of video frames to record
-  -r rate             set frame rate (Hz value, fraction or abbreviation)
-  -s size             set frame size (WxH or abbreviation)
-  -aspect aspect      set aspect ratio (4:3, 16:9 or 1.3333, 1.7777)
-  -croptop size       set top crop band size (in pixels)
-  -cropbottom size    set bottom crop band size (in pixels)
-  -cropleft size      set left crop band size (in pixels)
-  -cropright size     set right crop band size (in pixels)
-  -padtop size        set top pad band size (in pixels)
-  -padbottom size     set bottom pad band size (in pixels)
-  -padleft size       set left pad band size (in pixels)
-  -padright size      set right pad band size (in pixels)
-  -padcolor color     set color of pad bands (Hex 000000 thru FFFFFF)
-  -vn                 disable video
-  -bt tolerance       set video bitrate tolerance (in kbit/s)
-  -maxrate bitrate    set max video bitrate tolerance (in kbit/s)
-  -minrate bitrate    set min video bitrate tolerance (in kbit/s)
-  -bufsize size       set ratecontrol buffer size (in kByte)
-  -vcodec codec       force video codec ('copy' to copy stream)
-  -sameq              use same video quality as source (implies VBR)
-  -pass n             select the pass number (1 or 2)
-  -passlogfile file   select two pass log file name
-  -newvideo           add a new video stream to the current output stream
+  iphone: |
+    ffmpeg version 0.8.2, Copyright (c) 2000-2011 the FFmpeg developers
+      built on Sep  4 2011 12:05:01 with clang 2.1 (tags/Apple/clang-163.7.1)
+      configuration: --prefix=/usr/local/Cellar/ffmpeg/0.8.2 --enable-shared --enable-gpl --enable-version3 --enable-nonfree --enable-hardcoded-tables --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libxvid --cc=clang
+      libavutil    51.  9. 1 / 51.  9. 1
+      libavcodec   53.  7. 0 / 53.  7. 0
+      libavformat  53.  4. 0 / 53.  4. 0
+      libavdevice  53.  1. 1 / 53.  1. 1
+      libavfilter   2. 23. 0 /  2. 23. 0
+      libswscale    2.  0. 0 /  2.  0. 0
+      libpostproc  51.  2. 0 / 51.  2. 0
+    [avi @ 0x7f9192048200] non-interleaved AVI
+    Input #0, avi, from '/Users/gregory/Documents/open_source/rvideo/tasks/../spec/files/boat.avi':
+      Metadata:
+        creation_time   : 2005-07-24/ 14:58  
+        encoder         : CASIO EX-Z55                  
+      Duration: 00:00:15.16, start: 0.000000, bitrate: 2078 kb/s
+        Stream #0.0: Video: mjpeg, yuvj420p, 320x240, 15.10 tbr, 15.10 tbn, 15.10 tbc
+        Stream #0.1: Audio: adpcm_ima_wav, 11025 Hz, 1 channels, s16, 44 kb/s
+    [buffer @ 0x7f9191c1a2c0] w:320 h:240 pixfmt:yuvj420p tb:1/1000000 sar:0/1 sws_param:
+    [scale @ 0x7f9191c19b20] w:320 h:240 fmt:yuvj420p -> w:640 h:480 fmt:yuvj420p flags:0x4
+    [libx264 @ 0x7f919205aa00] using cpu capabilities: MMX2 SSE2Fast SSSE3 FastShuffle SSE4.2 AVX
+    [libx264 @ 0x7f919205aa00] profile Main, level 3.0
+    [libx264 @ 0x7f919205aa00] 264 - core 115 - H.264/MPEG-4 AVC codec - Copyleft 2003-2011 - http://www.videolan.org/x264.html - options: cabac=0 ref=3 deblock=1:0:0 analyse=0x1:0x111 me=dia subme=5 psy=1 psy_rd=1.00:0.00 mixed_ref=0 me_range=16 chroma_me=1 trellis=1 8x8dct=0 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=0 threads=12 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=0 weightp=2 keyint=100 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=cbr mbtree=1 bitrate=440 ratetol=1.0 qcomp=0.60 qpmin=10 qpmax=51 qpstep=4 vbv_maxrate=440 vbv_bufsize=10000 nal_hrd=none ip_ratio=1.41 aq=1:1.00
+    Output #0, mp4, to '/var/folders/pb/2rjc9l6n2fj893l8b7p6pxx80000gn/T/d20110904-63028-qc8kz9/tmp392941.mp4':
+      Metadata:
+        creation_time   : 2005-07-24/ 14:58  
+        encoder         : Lavf53.4.0
+        Stream #0.0: Video: libx264, yuvj420p, 640x480, q=10-51, 440 kb/s, 25 tbn, 25 tbc
+        Stream #0.1: Audio: libfaac, 48000 Hz, 1 channels, s16, 48 kb/s
+    Stream mapping:
+      Stream #0.0 -> #0.0
+      Stream #0.1 -> #0.1
+    Press [q] to stop, [?] for help
+    frame=  136 fps=  0 q=39.0 size=     196kB time=00:00:03.32 bitrate= 484.0kbits/s dup=53 drop=0    
+    frame=  260 fps=256 q=38.0 size=     481kB time=00:00:08.28 bitrate= 475.5kbits/s dup=102 drop=0    
+    frame=  377 fps=230 q=-1.0 Lsize=     863kB time=00:00:15.08 bitrate= 469.0kbits/s dup=148 drop=0    
+    video:764kB audio:89kB global headers:0kB muxing overhead 1.134934%
+    frame I:9     Avg QP:33.00  size:  8590
+    [libx264 @ 0x7f919205aa00] frame P:368   Avg QP:36.41  size:  1915
+    [libx264 @ 0x7f919205aa00] mb I  I16..4: 75.9%  0.0% 24.1%
+    [libx264 @ 0x7f919205aa00] mb P  I16..4: 13.2%  0.0%  0.7%  P16..4: 21.0%  3.0%  0.3%  0.0%  0.0%    skip:61.9%
+    [libx264 @ 0x7f919205aa00] coded y,uvDC,uvAC intra: 24.2% 32.5% 0.9% inter: 5.3% 9.4% 0.0%
+    [libx264 @ 0x7f919205aa00] i16 v,h,dc,p: 19% 47% 22% 11%
+    [libx264 @ 0x7f919205aa00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 10% 40% 27%  2%  4%  2%  5%  2%  9%
+    [libx264 @ 0x7f919205aa00] i8c dc,h,v,p: 82% 10%  7%  1%
+    [libx264 @ 0x7f919205aa00] Weighted P-Frames: Y:0.0% UV:0.0%
+    [libx264 @ 0x7f919205aa00] ref P L0: 70.6% 15.0%  9.7%  4.7%
+    [libx264 @ 0x7f919205aa00] kb/s:414.95
 
-  Advanced Video options:
-  -pix_fmt format     set pixel format
-  -g gop_size         set the group of picture size
-  -intra              use only intra frames
-  -vdt n              discard threshold
-  -qscale q           use fixed video quantiser scale (VBR)
-  -qmin q             min video quantiser scale (VBR)
-  -qmax q             max video quantiser scale (VBR)
-  -lmin lambda        min video lagrange factor (VBR)
-  -lmax lambda        max video lagrange factor (VBR)
-  -mblmin q           min macroblock quantiser scale (VBR)
-  -mblmax q           max macroblock quantiser scale (VBR)
-  -qdiff q            max difference between the quantiser scale (VBR)
-  -qblur blur         video quantiser scale blur (VBR)
-  -qsquish squish     how to keep quantiser between qmin and qmax (0 = clip, 1 = use differentiable function)
-  -qcomp compression  video quantiser scale compression (VBR)
-  -rc_init_cplx complexity  initial complexity for 1-pass encoding
-  -b_qfactor factor   qp factor between p and b frames
-  -i_qfactor factor   qp factor between p and i frames
-  -b_qoffset offset   qp offset between p and b frames
-  -i_qoffset offset   qp offset between p and i frames
-  -ibias bias         intra quant bias
-  -pbias bias         inter quant bias
-  -rc_eq equation     set rate control equation
-  -rc_override override  rate control override for specific intervals
-  -me method          set motion estimation method
-  -me_threshold       motion estimaton threshold
-  -mb_threshold       macroblock threshold
-  -bf frames          use 'frames' B frames
-  -preme              pre motion estimation
-  -bug param          workaround not auto detected encoder bugs
-  -strict strictness  how strictly to follow the standards
-  -deinterlace        deinterlace pictures
-  -psnr               calculate PSNR of compressed frames
-  -vstats             dump video coding statistics to file
-  -vhook module       insert video processing module
-  -intra_matrix matrix  specify intra matrix coeffs
-  -inter_matrix matrix  specify inter matrix coeffs
-  -top                top=1/bottom=0/auto=-1 field first
-  -sc_threshold threshold  scene change threshold
-  -me_range range     limit motion vectors range (1023 for DivX player)
-  -dc precision       intra_dc_precision
-  -mepc factor (1.0 = 256)  motion estimation bitrate penalty compensation
-  -vtag fourcc/tag    force video tag/fourcc
-  -skip_threshold threshold  frame skip threshold
-  -skip_factor factor  frame skip factor
-  -skip_exp exponent  frame skip exponent
-  -genpts             generate pts
-  -qphist             show QP histogram
+  unexpected_results: |
+    ffmpeg version 0.8.2, Copyright (c) 2000-2011 the FFmpeg developers
+      built on Sep  4 2011 12:05:01 with clang 2.1 (tags/Apple/clang-163.7.1)
+      configuration: --prefix=/usr/local/Cellar/ffmpeg/0.8.2 --enable-shared --enable-gpl --enable-version3 --enable-nonfree --enable-hardcoded-tables --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libxvid --cc=clang
+      libavutil    51.  9. 1 / 51.  9. 1
+      libavcodec   53.  7. 0 / 53.  7. 0
+      libavformat  53.  4. 0 / 53.  4. 0
+      libavdevice  53.  1. 1 / 53.  1. 1
+      libavfilter   2. 23. 0 /  2. 23. 0
+      libswscale    2.  0. 0 /  2.  0. 0
+      libpostproc  51.  2. 0 / 51.  2. 0
+    [avi @ 0x7fb45c048200] non-interleaved AVI
+    Input #0, avi, from '/Users/gregory/Documents/open_source/rvideo/tasks/../spec/files/boat.avi':
+      Metadata:
+        creation_time   : 2005-07-24/ 14:58  
+        encoder         : CASIO EX-Z55                  
+      Duration: 00:00:15.16, start: 0.000000, bitrate: 2078 kb/s
+        Stream #0.0: Video: mjpeg, yuvj420p, 320x240, 15.10 tbr, 15.10 tbn, 15.10 tbc
+        Stream #0.1: Audio: adpcm_ima_wav, 11025 Hz, 1 channels, s16, 44 kb/s
+    [buffer @ 0x7fb45bc18c40] w:320 h:240 pixfmt:yuvj420p tb:1/1000000 sar:0/1 sws_param:
+    [libx264 @ 0x7fb45c05aa00] using cpu capabilities: MMX2 SSE2Fast SSSE3 FastShuffle SSE4.2 AVX
+    [libx264 @ 0x7fb45c05aa00] profile High, level 2.0
+    [libx264 @ 0x7fb45c05aa00] 264 - core 115 - H.264/MPEG-4 AVC codec - Copyleft 2003-2011 - http://www.videolan.org/x264.html - options: cabac=1 ref=2 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=6 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=1 keyint=250 keyint_min=15 scenecut=40 intra_refresh=0 rc_lookahead=30 rc=abr mbtree=1 bitrate=500 ratetol=1.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+    Output #0, mp4, to '/var/folders/pb/2rjc9l6n2fj893l8b7p6pxx80000gn/T/d20110904-63028-qc8kz9/tmp854747.mp4':
+      Metadata:
+        creation_time   : 2005-07-24/ 14:58  
+        encoder         : Lavf53.4.0
+        Stream #0.0: Video: libx264, yuvj420p, 320x240, q=2-31, 500 kb/s, 500k tbn, 15.10 tbc
+        Stream #0.1: Audio: libfaac, 44100 Hz, 2 channels, s16, 64 kb/s
+    Stream mapping:
+      Stream #0.0 -> #0.0
+      Stream #0.1 -> #0.1
+    Press [q] to stop, [?] for help
+    frame=   63 fps=  0 q=30.0 size=     145kB time=00:00:01.98 bitrate= 599.8kbits/s    
+    frame=  100 fps= 98 q=30.0 size=     305kB time=00:00:04.43 bitrate= 563.9kbits/s    
+    frame=  138 fps= 91 q=30.0 size=     455kB time=00:00:06.95 bitrate= 535.8kbits/s    
+    frame=  179 fps= 88 q=27.0 size=     593kB time=00:00:09.66 bitrate= 502.5kbits/s    
+    frame=  213 fps= 84 q=29.0 size=     784kB time=00:00:11.91 bitrate= 538.8kbits/s    
+    frame=  229 fps= 74 q=29.0 Lsize=     993kB time=00:00:15.03 bitrate= 541.3kbits/s    
+    video:909kB audio:74kB global headers:0kB muxing overhead 0.989353%
+    frame I:2     Avg QP:22.93  size: 11442
+    [libx264 @ 0x7fb45c05aa00] frame P:131   Avg QP:27.49  size:  5137
+    [libx264 @ 0x7fb45c05aa00] frame B:96    Avg QP:28.85  size:  2446
+    [libx264 @ 0x7fb45c05aa00] consecutive B-frames: 16.2% 83.8%  0.0%  0.0%
+    [libx264 @ 0x7fb45c05aa00] mb I  I16..4:  0.8% 98.3%  0.8%
+    [libx264 @ 0x7fb45c05aa00] mb P  I16..4:  1.1% 29.6%  0.4%  P16..4: 36.4% 17.2%  6.8%  0.0%  0.0%    skip: 8.5%
+    [libx264 @ 0x7fb45c05aa00] mb B  I16..4:  0.6% 15.8%  0.2%  B16..8: 33.5% 15.8%  1.6%  direct:18.9%  skip:13.7%  L0:18.1% L1:25.4% BI:56.5%
+    [libx264 @ 0x7fb45c05aa00] final ratefactor: 25.26
+    [libx264 @ 0x7fb45c05aa00] 8x8 transform intra:95.2% inter:72.1%
+    [libx264 @ 0x7fb45c05aa00] coded y,uvDC,uvAC intra: 82.1% 73.0% 26.0% inter: 48.0% 40.6% 1.6%
+    [libx264 @ 0x7fb45c05aa00] i16 v,h,dc,p: 22% 33% 17% 28%
+    [libx264 @ 0x7fb45c05aa00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu:  4% 43% 29%  2%  3%  1%  6%  2% 10%
+    [libx264 @ 0x7fb45c05aa00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 12% 29% 23%  4%  4%  3%  6%  5% 13%
+    [libx264 @ 0x7fb45c05aa00] i8c dc,h,v,p: 66% 18% 13%  3%
+    [libx264 @ 0x7fb45c05aa00] Weighted P-Frames: Y:0.8% UV:0.0%
+    [libx264 @ 0x7fb45c05aa00] ref P L0: 85.4% 14.6%
+    [libx264 @ 0x7fb45c05aa00] ref B L0: 94.0%  6.0%
+    [libx264 @ 0x7fb45c05aa00] kb/s:490.98
 
-  Audio options:
-  -aframes number     set the number of audio frames to record
-  -ab bitrate         set audio bitrate (in kbit/s)
-  -aq quality         set audio quality (codec-specific)
-  -ar rate            set audio sampling rate (in Hz)
-  -ac channels        set number of audio channels
-  -an                 disable audio
-  -acodec codec       force audio codec ('copy' to copy stream)
-  -vol volume         change audio volume (256=normal)
-  -newaudio           add a new audio stream to the current output stream
-  -alang code         set the ISO 639 language code (3 letters) of the current audio stream
+  param_missing_value: |
+    ffmpeg version 0.8.2, Copyright (c) 2000-2011 the FFmpeg developers
+      built on Sep  4 2011 12:05:01 with clang 2.1 (tags/Apple/clang-163.7.1)
+      configuration: --prefix=/usr/local/Cellar/ffmpeg/0.8.2 --enable-shared --enable-gpl --enable-version3 --enable-nonfree --enable-hardcoded-tables --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libxvid --cc=clang
+      libavutil    51.  9. 1 / 51.  9. 1
+      libavcodec   53.  7. 0 / 53.  7. 0
+      libavformat  53.  4. 0 / 53.  4. 0
+      libavdevice  53.  1. 1 / 53.  1. 1
+      libavfilter   2. 23. 0 /  2. 23. 0
+      libswscale    2.  0. 0 /  2.  0. 0
+      libpostproc  51.  2. 0 / 51.  2. 0
+    Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'spec/files/kites.mp4':
+      Metadata:
+        major_brand     : 3gp4
+        minor_version   : 256
+        compatible_brands: 3gp53gp4isom
+      Duration: 00:00:19.60, start: 0.000000, bitrate: 98 kb/s
+        Stream #0.0(und): Video: mpeg4, yuv420p, 176x144 [PAR 1:1 DAR 11:9], 85 kb/s, PAR 12:11 DAR 4:3, 10 fps, 10 tbr, 1k tbn, 10 tbc
+        Stream #0.1(und): Audio: amrnb, 8000 Hz, 1 channels, flt, 7 kb/s
+    Expected number for ar but found: -b
 
-  Advanced Audio options:
-  -atag fourcc/tag    force audio tag/fourcc
-
-  Subtitle options:
-  -scodec codec       force subtitle codec ('copy' to copy stream)
-  -newsubtitle        add a new subtitle stream to the current output stream
-  -slang code         set the ISO 639 language code (3 letters) of the current subtitle stream
-
-  Audio/Video grab options:
-  -vd device          set video grab device
-  -vc channel         set video grab channel (DV1394 only)
-  -tvstd standard     set television standard (NTSC, PAL (SECAM))
-  -ad device          set audio device
-  -grab format        request grabbing using
-  -gd device          set grab device
-
-  Advanced options:
-  -map file:stream[:syncfile:syncstream]  set input stream mapping
-  -map_meta_data outfile:infile  set meta data information of outfile from infile
-  -benchmark          add timings for benchmarking
-  -dump               dump each input packet
-  -hex                when dumping packets, also dump the payload
-  -re                 read input at native frame rate
-  -loop_input         loop (current only works with images)
-  -loop_output        number of times to loop output in formats that support looping (0 loops forever)
-  -threads count      thread count
-  -vsync              video sync method
-  -async              audio sync method
-  -vglobal            video global header storage type
-  -copyts             copy timestamps
-  -shortest           finish encoding within shortest input
-  -dts_delta_threshold   timestamp discontinuity delta threshold
-  -ps size            set packet size in bits
-  -error rate         error rate
-  -muxrate rate       set mux rate
-  -packetsize size    set packet size
-  -muxdelay seconds   set the maximum demux-decode delay
-  -muxpreload seconds  set the initial demux-decode delay
-  AVCodecContext AVOptions:
-  -bit_rate          <int>   E.VA.
-  -bit_rate_tolerance <int>   E.V..
-  -flags             <flags> EDVA.
-  -mv4                       E.V.. use four motion vector by macroblock (mpeg4)
-  -obmc                      E.V.. use overlapped block motion compensation (h263+)
-  -qpel                      E.V.. use 1/4 pel motion compensation
-  -loop                      E.V.. use loop filter
-  -gmc                       E.V.. use gmc
-  -mv0                       E.V.. always try a mb with mv=<0,0>
-  -part                      E.V.. use data partitioning
-  -gray                      EDV.. only decode/encode grayscale
-  -psnr                      E.V.. error[?] variables will be set during encoding
-  -naq                       E.V.. normalize adaptive quantization
-  -ildct                     E.V.. use interlaced dct
-  -low_delay                 .DV.. force low delay
-  -alt                       E.V.. enable alternate scantable (mpeg2/mpeg4)
-  -trell                     E.V.. use trellis quantization
-  -bitexact                  EDVAS use only bitexact stuff (except (i)dct)
-  -aic                       E.V.. h263 advanced intra coding / mpeg4 ac prediction
-  -umv                       E.V.. use unlimited motion vectors
-  -cbp                       E.V.. use rate distortion optimization for cbp
-  -qprd                      E.V.. use rate distortion optimization for qp selection
-  -aiv                       E.V.. h263 alternative inter vlc
-  -slice                     E.V..
-  -ilme                      E.V.. interlaced motion estimation
-  -scan_offset               E.V.. will reserve space for svcd scan offset user data
-  -cgop                      E.V.. closed gop
-  -fast                      E.V.. allow non spec compliant speedup tricks
-  -sgop                      E.V.. strictly enforce gop size
-  -noout                     E.V.. skip bitstream encoding
-  -local_header              E.V.. place global headers at every keyframe instead of in extradata
-  -me_method         <int>   E.V..
-  -gop_size          <int>   E.V..
-  -cutoff            <int>   E..A. set cutoff bandwidth
-  -qcompress         <float> E.V..
-  -qblur             <float> E.V..
-  -qmin              <int>   E.V..
-  -qmax              <int>   E.V..
-  -max_qdiff         <int>   E.V..
-  -max_b_frames      <int>   E.V..
-  -b_quant_factor    <float> E.V..
-  -rc_strategy       <int>   E.V..
-  -b_strategy        <int>   E.V..
-  -hurry_up          <int>   .DV..
-  -bugs              <int>   .DV..
-  -autodetect                .DV..
-  -old_msmpeg4               .DV..
-  -xvid_ilace                .DV..
-  -ump4                      .DV..
-  -no_padding                .DV..
-  -amv                       .DV..
-  -ac_vlc                    .DV..
-  -qpel_chroma               .DV..
-  -std_qpel                  .DV..
-  -qpel_chroma2              .DV..
-  -direct_blocksize          .DV..
-  -edge                      .DV..
-  -hpel_chroma               .DV..
-  -dc_clip                   .DV..
-  -ms                        .DV..
-  -lelim             <int>   E.V.. single coefficient elimination threshold for luminance (negative values also consider dc coefficient)
-  -celim             <int>   E.V.. single coefficient elimination threshold for chrominance (negative values also consider dc coefficient)
-  -strict            <int>   E.V..
-  -very                      E.V..
-  -strict                    E.V..
-  -normal                    E.V..
-  -inofficial                E.V..
-  -experimental              E.V..
-  -b_quant_offset    <float> E.V..
-  -er                <int>   .DV..
-  -careful                   .DV..
-  -compliant                 .DV..
-  -aggressive                .DV..
-  -very_aggressive           .DV..
-  -mpeg_quant        <int>   E.V..
-  -rc_qsquish        <float> E.V..
-  -rc_qmod_amp       <float> E.V..
-  -rc_qmod_freq      <int>   E.V..
-  -rc_eq             <string> E.V..
-  -rc_max_rate       <int>   E.V..
-  -rc_min_rate       <int>   E.V..
-  -rc_buffer_size    <int>   E.V..
-  -rc_buf_aggressivity <float> E.V..
-  -i_quant_factor    <float> E.V..
-  -i_quant_offset    <float> E.V..
-  -rc_initial_cplx   <float> E.V..
-  -dct               <int>   E.V..
-  -auto                      E.V..
-  -fastint                   E.V..
-  -int                       E.V..
-  -mmx                       E.V..
-  -mlib                      E.V..
-  -altivec                   E.V..
-  -faan                      E.V..
-  -lumi_mask         <float> E.V.. lumimasking
-  -tcplx_mask        <float> E.V.. temporal complexity masking
-  -scplx_mask        <float> E.V.. spatial complexity masking
-  -p_mask            <float> E.V.. inter masking
-  -dark_mask         <float> E.V.. darkness masking
-  -idct              <int>   EDV..
-  -auto                      EDV..
-  -int                       EDV..
-  -simple                    EDV..
-  -simplemmx                 EDV..
-  -libmpeg2mmx               EDV..
-  -ps2                       EDV..
-  -mlib                      EDV..
-  -arm                       EDV..
-  -altivec                   EDV..
-  -sh4                       EDV..
-  -simplearm                 EDV..
-  -h264                      EDV..
-  -vp3                       EDV..
-  -ipp                       EDV..
-  -xvidmmx                   EDV..
-  -ec                <flags> .DV..
-  -guess_mvs                 .DV..
-  -deblock                   .DV..
-  -pred              <int>   E.V.. prediction method
-  -left                      E.V..
-  -plane                     E.V..
-  -median                    E.V..
-  -aspect            <rational> E.V..
-  -debug             <flags> EDVAS print specific debug info
-  -pict                      .DV..
-  -rc                        E.V..
-  -bitstream                 .DV..
-  -mb_type                   .DV..
-  -qp                        .DV..
-  -mv                        .DV..
-  -dct_coeff                 .DV..
-  -skip                      .DV..
-  -startcode                 .DV..
-  -pts                       .DV..
-  -er                        .DV..
-  -mmco                      .DV..
-  -bugs                      .DV..
-  -vis_qp                    .DV..
-  -vis_mb_type               .DV..
-  -vismv             <int>   .DV.. visualize motion vectors
-  -pf                        .DV..
-  -bf                        .DV..
-  -bb                        .DV..
-  -mb_qmin           <int>   E.V..
-  -mb_qmax           <int>   E.V..
-  -cmp               <int>   E.V.. full pel me compare function
-  -subcmp            <int>   E.V.. sub pel me compare function
-  -mbcmp             <int>   E.V.. macroblock compare function
-  -ildctcmp          <int>   E.V.. interlaced dct compare function
-  -dia_size          <int>   E.V..
-  -last_pred         <int>   E.V..
-  -preme             <int>   E.V..
-  -precmp            <int>   E.V.. pre motion estimation compare function
-  -sad                       E.V..
-  -sse                       E.V..
-  -satd                      E.V..
-  -dct                       E.V..
-  -psnr                      E.V..
-  -bit                       E.V..
-  -rd                        E.V..
-  -zero                      E.V..
-  -vsad                      E.V..
-  -vsse                      E.V..
-  -nsse                      E.V..
-  -w53                       E.V..
-  -w97                       E.V..
-  -dctmax                    E.V..
-  -chroma                    E.V..
-  -pre_dia_size      <int>   E.V..
-  -subq              <int>   E.V.. sub pel motion estimation quality
-  -me_range          <int>   E.V..
-  -ibias             <int>   E.V..
-  -pbias             <int>   E.V..
-  -coder             <int>   E.V..
-  -vlc                       E.V.. variable length coder / huffman coder
-  -ac                        E.V.. arithmetic coder
-  -context           <int>   E.V.. context model
-  -mbd               <int>   E.V..
-  -simple                    E.V..
-  -bits                      E.V..
-  -rd                        E.V..
-  -sc_threshold      <int>   E.V..
-  -lmin              <int>   E.V.. min lagrange factor
-  -lmax              <int>   E.V.. max lagrange factor
-  -nr                <int>   E.V.. noise reduction
-  -rc_init_occupancy <int>   E.V..
-  -inter_threshold   <int>   E.V..
-  -flags2            <flags> EDVA.
-  -antialias         <int>   .DV..
-  -auto                      .DV..
-  -fastint                   .DV..
-  -int                       .DV..
-  -float                     .DV..
-  -qns               <int>   E.V.. quantizer noise shaping
-  -thread_count      <int>   EDV..
-  -dc                <int>   E.V..
-  -nssew             <int>   E.V.. nsse weight
-  -skip_top          <int>   .DV..
-  -skip_bottom       <int>   .DV..
-  -profile           <int>   E.VA.
-  -unknown                   E.VA.
-  -level             <int>   E.VA.
-  -unknown                   E.VA.
-  -lowres            <int>   .DV..
-  -frame_skip_threshold <int>   E.V..
-  -frame_skip_factor <int>   E.V..
-  -frame_skip_exp    <int>   E.V..
-  -skipcmp           <int>   E.V.. frame skip compare function
-  -border_mask       <float> E.V..
-  -mb_lmin           <int>   E.V..
-  -mb_lmax           <int>   E.V..
-  -me_penalty_compensation <int>   E.V..
-  -bidir_refine      <int>   E.V..
-  -brd_scale         <int>   E.V..
-  -crf               <int>   E.V..
-  -cqp               <int>   E.V..
-  -keyint_min        <int>   E.V..
-  -refs              <int>   E.V..
-  -chromaoffset      <int>   E.V..
-  -bframebias        <int>   E.V..
-  -trellis           <int>   E.V..
-  -directpred        <int>   E.V..
-  -bpyramid                  E.V..
-  -wpred                     E.V..
-  -mixed_refs                E.V..
-  -8x8dct                    E.V..
-  -fastpskip                 E.V..
-  -aud                       E.V..
-  -brdo                      E.V..
-  -complexityblur    <float> E.V..
-  -deblockalpha      <int>   E.V..
-  -deblockbeta       <int>   E.V..
-  -partitions        <flags> E.V..
-  -parti4x4                  E.V..
-  -parti8x8                  E.V..
-  -partp4x4                  E.V..
-  -partp8x8                  E.V..
-  -partb8x8                  E.V..
-  -sc_factor         <int>   E.V..
-
-broken_command: |
-  FFmpeg version CVS, Copyright (c) 2000-2004 Fabrice Bellard
-  Mac OSX universal build for ffmpegX
-    configuration:  --enable-memalign-hack --enable-mp3lame --enable-gpl --disable-vhook --disable-ffplay --disable-ffserver --enable-a52 --enable-xvid --enable-faac --enable-faad --enable-amr_nb --enable-amr_wb --enable-pthreads --enable-x264 
-    libavutil version: 49.0.0
-    libavcodec version: 51.9.0
-    libavformat version: 50.4.0
-    built on Apr 15 2006 04:58:19, gcc: 4.0.1 (Apple Computer, Inc. build 5250)
-  Unable for find a suitable output format for 'foo'
-
-output_has_no_streams: |
-  Unexpected result details (FFmpeg version SVN-r10656, Copyright (c) 2000-2007 Fabrice Bellard, et al.
-    configuration: --enable-libmp3lame --enable-libogg --enable-libvorbis --enable-liba52 --enable-libxvid --enable-libfaac --enable-libfaad --enable-libx264 --enable-libxvid --enable-pp --enable-shared --enable-gpl --enable-libtheora --enable-libfaadbin --enable-liba52bin --enable-libamr_nb --enable-libamr_wb --extra-ldflags=-L/usr/local/ffmpeg-src/ffmpeg/libavcodec/acfr16/ --extra-libs=-lacfr --enable-libacfr16
-    libavutil version: 49.5.0
-    libavcodec version: 51.44.0
-    libavformat version: 51.14.0
-    built on Oct 31 2007 00:58:48, gcc: 4.1.2 (Ubuntu 4.1.2-0ubuntu4)
-
-  Seems stream 0 codec frame rate differs from container frame rate: 1000.00 (1000/1) -> 30.00 (30/1)
-  Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/mnt/app/current/tmp/114/FlyIn1Comp.mov':
-    Duration: 00:00:08.3, start: 0.000000, bitrate: 2253 kb/s
-    Stream #0.0(eng): Video: mpeg4, yuv420p, 320x240, 30.00 fps(r)
-  Output file does not contain any stream
-  )
-
-missing_input_file: |
-  FFmpeg version CVS, Copyright (c) 2000-2004 Fabrice Bellard
-  Mac OSX universal build for ffmpegX
-    configuration:  --enable-memalign-hack --enable-mp3lame --enable-gpl --disable-vhook --disable-ffplay --disable-ffserver --enable-a52 --enable-xvid --enable-faac --enable-faad --enable-amr_nb --enable-amr_wb --enable-pthreads --enable-x264 
-    libavutil version: 49.0.0
-    libavcodec version: 51.9.0
-    libavformat version: 50.4.0
-    built on Apr 15 2006 04:58:19, gcc: 4.0.1 (Apple Computer, Inc. build 5250)
-  asdf: I/O error occured
-  Usually that means that input file is truncated and/or corrupted.
-
-unexpected_results: |
-  FFmpeg version CVS, Copyright (c) 2000-2004 Fabrice Bellard
-  Mac OSX universal build for ffmpegX
-    configuration:  --enable-memalign-hack --enable-mp3lame --enable-gpl --disable-vhook --disable-ffplay --disable-ffserver --enable-a52 --enable-xvid --enable-faac --enable-faad --enable-amr_nb --enable-amr_wb --enable-pthreads --enable-x264 
-    libavutil version: 49.0.0
-    libavcodec version: 51.9.0
-    libavformat version: 50.4.0
-    built on Apr 15 2006 04:58:19, gcc: 4.0.1 (Apple Computer, Inc. build 5250)
-
-  Seems that stream 1 comes from film source: 600.00 (600/1) -> 59.75 (239/4)
-  Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'jobjob2.mov':
-    Duration: 00:01:09.0, start: 0.000000, bitrate: 28847 kb/s
-    Stream #0.0(eng): Audio: aac, 44100 Hz, stereo
-    Stream #0.1(eng), 59.75 fps(r): Video: dvvideo, yuv411p, 720x480
-  Stream mapping:
-    Stream #0.1 -> #0.0
-    Stream #0.0 -> #0.1
-  Press [q] to stop encoding
-  foo
-  bar
-  
-unwritable_stream: |
-  FFmpeg version CVS, Copyright (c) 2000-2004 Fabrice Bellard
-  Mac OSX universal build for ffmpegX
-    configuration:  --enable-memalign-hack --enable-mp3lame --enable-gpl --disable-vhook --disable-ffplay --disable-ffserver --enable-a52 --enable-xvid --enable-faac --enable-faad --enable-amr_nb --enable-amr_wb --enable-pthreads --enable-x264 
-    libavutil version: 49.0.0
-    libavcodec version: 51.9.0
-    libavformat version: 50.4.0
-    built on Apr 15 2006 04:58:19, gcc: 4.0.1 (Apple Computer, Inc. build 5250)
-
-  Seems that stream 1 comes from film source: 600.00 (600/1) -> 59.75 (239/4)
-  Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'jobjob2.mov':
-    Duration: 00:01:09.0, start: 0.000000, bitrate: 28847 kb/s
-    Stream #0.0(eng): Audio: aac, 44100 Hz, stereo
-    Stream #0.1(eng), 59.75 fps(r): Video: dvvideo, yuv411p, 720x480
-  Stream mapping:
-    Stream #0.1 -> #0.0
-    Stream #0.0 -> #0.1
-  Press [q] to stop encoding
-  [mp3 @ 0x54340c]flv doesnt support that sample rate, choose from (44100, 22050, 11025)
-  Could not write header for output file #0 (incorrect codec parameters ?)
-
-unsupported_codec: |
-  FFmpeg version SVN-r9102, Copyright (c) 2000-2007 Fabrice Bellard, et al. configuration: --prefix=/opt/local --prefix=/opt/local --disable-vhook --mandir=/opt/local/share/man --enable-shared --enable-pthreads --disable-mmx --enable-gpl --enable-libmp3lame --enable-libogg --enable-libvorbis --enable-libtheora --enable-libfaac --enable-xvid --enable-x264 --enable-liba52 libavutil version: 49.4.0 libavcodec version: 51.40.4 libavformat version: 51.12.1 built on Dec 11 2007 12:00:30, gcc: 4.0.1 (Apple Inc. build 5465) Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/jon/projects/rvideo/spec/files/kites.mp4': Duration: 00:00:19.6, start: 0.000000, bitrate: 98 kb/s Stream #0.0(und): Video: mpeg4, yuv420p, 176x144, 10.00 fps(r) Stream #0.1(und): Audio: samr / 0x726D6173, 8000 Hz, mono Output #0, flv, to '/Users/jon/projects/rvideo/tmp/kites.flv': Stream #0.0: Video: flv, yuv420p, 320x240, q=2-31, pass 1, 300 kb/s, 15.00 fps(c) Stream #0.1: Audio: mp3, 22050 Hz, stereo, 64 kb/s Stream mapping: Stream #0.0 -> #0.0 Stream #0.1 -> #0.1 Unsupported codec (id=73728) for input stream #0.1
-
-param_missing_value: |
-  FFmpeg version SVN-r17572, Copyright (c) 2000-2009 Fabrice Bellard, et al.
-    configuration: --prefix=/usr/local --disable-vhook --enable-pthreads --enable-shared --enable-gpl --enable-libmp3lame --enable-libfaac --enable-libfaad --enable-libx264 --enable-nonfree --enable-libamr-nb --enable-libamr-wb
-    libavutil 49.15. 0 / 49.15. 0
-    libavcodec 52.18. 0 / 52.18. 0
-    libavformat 52.29. 2 / 52.29. 2
-    libavdevice 52. 1. 0 / 52. 1. 0
-    built on Feb 24 2009 18:10:13, gcc: 4.0.1 (Apple Inc. build 5490)
-  [avi @ 0x1802400]non-interleaved AVI
-  Input #0, avi, from '/Users/seth/diversion/hdcloud/encodes/vimeo.57652_104_419.avi':
-    Duration: 00:00:15.16, start: 0.000000, bitrate: 2078 kb/s
-    Stream #0.0: Video: mjpeg, yuvj420p, 320x240, 15.10 tbr, 15.10 tbn, 15.10 tbc
-    Stream #0.1: Audio: adpcm_ima_wav, 11025 Hz, mono, s16, 44 kb/s
-  Expected number for ar but found: -b
-
-###
-
-inspect_boat_avi: |
-  FFmpeg version SVN-r17587, Copyright (c) 2000-2009 Fabrice Bellard, et al.
-    configuration: --prefix=/usr/local --disable-vhook --enable-pthreads --enable-shared --enable-gpl --enable-libmp3lame --enable-libfaac --enable-libfaad --enable-libx264 --enable-nonfree --enable-libamr-nb --enable-libamr-wb
-    libavutil     49.15. 0 / 49.15. 0
-    libavcodec    52.19. 0 / 52.19. 0
-    libavformat   52.30. 0 / 52.30. 0
-    libavdevice   52. 1. 0 / 52. 1. 0
-    built on Feb 25 2009 11:43:00, gcc: 4.0.1 (Apple Inc. build 5490)
-  [avi @ 0x1802400]non-interleaved AVI
-  Input #0, avi, from 'spec/files/boat.avi':
-    Duration: 00:00:15.16, start: 0.000000, bitrate: 2078 kb/s
-      Stream #0.0: Video: mjpeg, yuvj420p, 320x240, 15.10 tbr, 15.10 tbn, 15.10 tbc
-      Stream #0.1: Audio: adpcm_ima_wav, 11025 Hz, mono, s16, 44 kb/s
-  At least one output file must be specified
-  

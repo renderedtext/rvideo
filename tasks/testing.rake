@@ -1,5 +1,6 @@
 require "rspec"
 require "rspec/core/rake_task"
+require File.join(File.dirname(__FILE__), '../spec/results_generator')
 
 namespace :spec do
   desc "Run Unit Specs"
@@ -10,6 +11,12 @@ namespace :spec do
   desc "Run Integration Specs"
   RSpec::Core::RakeTask.new(:integrations) do |spec|
     spec.pattern = "spec/integrations/**/*.rb"
+  end
+  
+  desc "Generate results by runing local ffmpeg and put them to ffmpeg_results.yml"
+  task :generate_ffmpeg_results do
+    rg = ResultsGenerator.new(:fixtures_file => File.join(File.dirname(__FILE__), '../spec/fixtures/ffmpeg_results.yml'))
+    rg.generate!
   end
 end
 
