@@ -10,8 +10,8 @@ def setup_ffmpeg_spec
   @ffmpeg = RVideo::Tools::Ffmpeg.new(@simple_avi, @options)
 end
 
-def parsing_result(result_fixture_key)
-  lambda { @ffmpeg.send(:parse_result, ffmpeg_result(result_fixture_key)) }
+def parsing_result(build, result_fixture_key)
+  lambda { @ffmpeg.send(:parse_result, ffmpeg_result(build, result_fixture_key)) }
 end
 
 module RVideo
@@ -248,138 +248,124 @@ module RVideo
     end
     
     describe Ffmpeg, " when parsing a result" do
-      before do
-        setup_ffmpeg_spec
+      load_fixture(:ffmpeg_results).each do |build, results|
+        before do
+          setup_ffmpeg_spec
+          @iphone_result  = ffmpeg_result(build, :iphone)
+          @android_result = ffmpeg_result(build, :android)
+          @simple_h264_result = ffmpeg_result(build, :simple_h264)
+        end
+      
+        it "should create correct result metadata" do
+          @ffmpeg.send(:parse_result, @iphone_result).should be_true
+          @ffmpeg.frame.should == '136'
+          @ffmpeg.output_fps.should == '0'
+          @ffmpeg.q.should == '39.0'
+          @ffmpeg.size.should == '196kB'
+          @ffmpeg.time.should == '00:00:03.32'
+          @ffmpeg.output_bitrate.should == '484.0kbits/s'
+          @ffmpeg.video_size.should == "764kB"
+          @ffmpeg.audio_size.should == "89kB"
+          @ffmpeg.header_size.should == "0kB"
+          @ffmpeg.overhead.should == "1.134934%"
+          @ffmpeg.psnr.should be_nil
+        end
+      
+        it "should create correct result metadata (2)" do
+          @ffmpeg.send(:parse_result, @android_result).should be_true
+          @ffmpeg.frame.should == '275'
+          @ffmpeg.output_fps.should == '0'
+          @ffmpeg.q.should == '9.4'
+          @ffmpeg.size.should == '660kB'
+          @ffmpeg.time.should == '00:00:10.92'
+          @ffmpeg.output_bitrate.should == '494.7kbits/s'
+          @ffmpeg.video_size.should == "812kB"
+          @ffmpeg.audio_size.should == "89kB"
+          @ffmpeg.header_size.should == "0kB"
+          @ffmpeg.overhead.should == "1.077030%"
+          @ffmpeg.psnr.should be_nil
+        end
         
-        @result  = ffmpeg_result(:result1)
-        @result2 = ffmpeg_result(:result2)
-        @result3 = ffmpeg_result(:result3)
-        @result4 = ffmpeg_result(:result4)
-      end
-      
-      it "should create correct result metadata" do
-        @ffmpeg.send(:parse_result, @result).should be_true
-        @ffmpeg.frame.should == '4126'
-        @ffmpeg.output_fps.should be_nil
-        @ffmpeg.q.should == '31.0'
-        @ffmpeg.size.should == '5917kB'
-        @ffmpeg.time.should == '69.1'
-        @ffmpeg.output_bitrate.should == '702.0kbits/s'
-        @ffmpeg.video_size.should == "2417kB"
-        @ffmpeg.audio_size.should == "540kB"
-        @ffmpeg.header_size.should == "0kB"
-        @ffmpeg.overhead.should == "100.140277%"
-        @ffmpeg.psnr.should be_nil
-      end
-      
-      it "should create correct result metadata (2)" do
-        @ffmpeg.send(:parse_result, @result2).should be_true
-        @ffmpeg.frame.should == '584'
-        @ffmpeg.output_fps.should be_nil
-        @ffmpeg.q.should == '6.0'
-        @ffmpeg.size.should == '708kB'
-        @ffmpeg.time.should == '19.5'
-        @ffmpeg.output_bitrate.should == '297.8kbits/s'
-        @ffmpeg.video_size.should == "49kB"
-        @ffmpeg.audio_size.should == "153kB"
-        @ffmpeg.header_size.should == "0kB"
-        @ffmpeg.overhead.should == "250.444444%"
-        @ffmpeg.psnr.should be_nil
-      end
-      
-      it "should create correct result metadata (3)" do
-        @ffmpeg.send(:parse_result, @result3).should be_true
-        @ffmpeg.frame.should == '273'
-        @ffmpeg.output_fps.should == "31"
-        @ffmpeg.q.should == '10.0'
-        @ffmpeg.size.should == '398kB'
-        @ffmpeg.time.should == '5.9'
-        @ffmpeg.output_bitrate.should == '551.8kbits/s'
-        @ffmpeg.video_size.should == "284kB"
-        @ffmpeg.audio_size.should == "92kB"
-        @ffmpeg.header_size.should == "0kB"
-        @ffmpeg.overhead.should == "5.723981%"
-        @ffmpeg.psnr.should be_nil
-      end
-      
-      it "should create correct result metadata (4)" do
-        @ffmpeg.send(:parse_result, @result4).should be_true
-        @ffmpeg.frame.should be_nil
-        @ffmpeg.output_fps.should be_nil
-        @ffmpeg.q.should be_nil
-        @ffmpeg.size.should == '1080kB'
-        @ffmpeg.time.should == '69.1'
-        @ffmpeg.output_bitrate.should == '128.0kbits'
-        @ffmpeg.video_size.should == "0kB"
-        @ffmpeg.audio_size.should == "1080kB"
-        @ffmpeg.header_size.should == "0kB"
-        @ffmpeg.overhead.should == "0.002893%"
-        @ffmpeg.psnr.should be_nil
-      end
-      
-      it "ffmpeg should calculate PSNR if it is turned on" do
-        @ffmpeg.send(:parse_result, @result.gsub("Lsize=","LPSNR=Y:33.85 U:37.61 V:37.46 *:34.77 size=")).should be_true
-        @ffmpeg.psnr.should == "Y:33.85 U:37.61 V:37.46 *:34.77"
+        it "should create correct result metadata (3)" do
+          @ffmpeg.send(:parse_result, @simple_h264_result).should be_true
+          @ffmpeg.frame.should == '63'
+          @ffmpeg.output_fps.should == '0'
+          @ffmpeg.q.should == '30.0'
+          @ffmpeg.size.should == '145kB'
+          @ffmpeg.time.should == '00:00:01.98'
+          @ffmpeg.output_bitrate.should == '599.8kbits/s'
+          @ffmpeg.video_size.should == "909kB"
+          @ffmpeg.audio_size.should == "74kB"
+          @ffmpeg.header_size.should == "0kB"
+          @ffmpeg.overhead.should == "0.989353%"
+          @ffmpeg.psnr.should be_nil
+        end
+                
+        it "ffmpeg should calculate PSNR if it is turned on" do
+          @ffmpeg.send(:parse_result, @iphone_result.gsub("Lsize=","LPSNR=Y:33.85 U:37.61 V:37.46 *:34.77 size=")).should be_true
+          @ffmpeg.psnr.should == "Y:33.85 U:37.61 V:37.46 *:34.77"
+        end
       end
     end
     
     describe Ffmpeg, "result parsing should raise an exception" do
-      before(:each) do
-        setup_ffmpeg_spec
-        @results = load_fixture :ffmpeg_results
-      end
+      load_fixture(:ffmpeg_results).each do |build, results|
       
-      it "when a param is missing a value" do
-        parsing_result(:param_missing_value).
-          should raise_error(TranscoderError::InvalidCommand, /Expected .+ for .+ but found: .+/)
-      end
+        before(:each) do
+          setup_ffmpeg_spec
+        end
       
-      it "when codec not supported" do
-        parsing_result(:amr_nb_not_supported).
-          should raise_error(TranscoderError::InvalidFile, "Codec amr_nb not supported by this build of ffmpeg")
-      end
+        it "when a param is missing a value" do
+          parsing_result(build, :param_missing_value).
+            should raise_error(TranscoderError::InvalidCommand, /Expected .+ for .+ but found: .+/)
+        end
       
-      it "when not passed a command" do
-        parsing_result(:missing_command).
-          should raise_error(TranscoderError::InvalidCommand, "must pass a command to ffmpeg")
-      end
+        it "when codec not supported" do
+          parsing_result(build, :amr_nb_not_supported).
+            should raise_error(TranscoderError::InvalidFile, "Codec amr_nb not supported by this build of ffmpeg")
+        end
       
-      it "when given a broken command" do
-        parsing_result(:broken_command).
-          should raise_error(TranscoderError::InvalidCommand, "Unable for find a suitable output format for 'foo'")
-      end
+        it "when not passed a command" do
+          parsing_result(build, :missing_command).
+            should raise_error(TranscoderError::InvalidCommand, "must pass a command to ffmpeg")
+        end
       
-      it "when the output file has no streams" do
-        parsing_result(:output_has_no_streams).
-          should raise_error(TranscoderError, /Output file does not contain.*stream/)
-      end
+        it "when given a broken command" do
+          parsing_result(build, :broken_command).
+            should raise_error(TranscoderError::InvalidCommand, /Unable to find a suitable output format for/)
+        end
       
-      it "when given a missing input file" do
-        parsing_result(:missing_input_file).
-          should raise_error(TranscoderError::InvalidFile, /I\/O error: .+/)
-      end
+        it "when the output file has no streams" do
+          parsing_result(build, :output_has_no_streams).
+            should raise_error(TranscoderError, /Output file does not contain.*stream/)
+        end
       
-      it "when given a file it can't handle"
+        it "when given a missing input file" do
+          parsing_result(build, :missing_input_file).
+            should raise_error(TranscoderError::InvalidFile, /No such file or directory/)
+        end
       
-      it "when cancelled halfway through"
+        it "when given a file it can't handle"
+      
+        it "when cancelled halfway through"
     
-      it "when receiving unexpected results" do
-        parsing_result(:unexpected_results).
-          should raise_error(TranscoderError::UnexpectedResult, 'foo - bar')
-      end
+        it "when receiving unexpected results" do
+          parsing_result(build, :unexpected_results).
+            should raise_error(TranscoderError::UnexpectedResult, 'foo - bar')
+        end
       
-      it "with an unsupported codec" do
-        @ffmpeg.original = Inspector.new(:raw_response => files('kites2'))
+        it "with an unsupported codec" do
+          pending
         
-        parsing_result(:unsupported_codec).
-          should raise_error(TranscoderError::InvalidFile, /samr/)
-      end
+          parsing_result(build, :unsupported_codec).
+            should raise_error(TranscoderError::InvalidFile, /samr/)
+        end
       
-      it "when a stream cannot be written" do
-        parsing_result(:unwritable_stream).
-          should raise_error(TranscoderError, /flv doesnt support.*incorrect codec/)
+        it "when a stream cannot be written" do
+          parsing_result(build, :unwritable_stream).
+            should raise_error(TranscoderError, /incorrect codec parameters/)
+        end
       end
-      
     end
   end
 end

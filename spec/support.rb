@@ -23,8 +23,8 @@ end
 
 # The strip in here is important as the result parsing is apparently 
 # quite fussy about leading or trailing whitespace.
-def ffmpeg_result(key)
-  load_fixture(:ffmpeg_results)[key.to_s].strip
+def ffmpeg_result(build, key)
+  load_fixture(:ffmpeg_results)[build.to_s][key.to_s].strip
 end
 
 ###

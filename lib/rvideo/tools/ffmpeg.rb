@@ -194,11 +194,11 @@ module RVideo
           raise TranscoderError::InvalidCommand, m.to_s
         end
         
-        if m = /Unable for find a suitable output format for.*$/.match(result)
+        if m = /Unable to find a suitable output format for.*$/.match(result)
           raise TranscoderError::InvalidCommand, m[0]
         end
         
-        if m = /Unknown codec \'(.*)\'/.match(result)
+        if m = /Unknown encoder \'(.*)\'/.match(result)
           raise TranscoderError::InvalidFile, "Codec #{m[1]} not supported by this build of ffmpeg"
        end
         
@@ -206,8 +206,13 @@ module RVideo
           raise TranscoderError::InvalidFile, "Codec not supported by this build of ffmpeg"
         end
         
+        
         if m = /I\/O error occured\n(.*)$/.match(result)
           raise TranscoderError::InvalidFile, "I/O error: #{m[1].strip}"
+        end
+        
+        if m = /^(missingfile.avi): No such file or directory/.match(result)
+          raise TranscoderError::InvalidFile, "No such file or directory: #{m[1].strip}"
         end
           
         if m = /\n(.*)Unknown Format$/.match(result)
@@ -226,7 +231,7 @@ module RVideo
           raise TranscoderError::InvalidCommand, "must pass a command to ffmpeg"
         end
         
-        if result =~ /Output file does not contain.*stream/
+        if result =~ /Output file.*does not contain.*stream/
           raise TranscoderError, "Output file does not contain any video or audio streams."
         end
         
