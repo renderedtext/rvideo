@@ -174,13 +174,14 @@ module RVideo
       private
       
       def parse_progress(line, duration)
+        
         if line =~ /Duration: (\d{2}):(\d{2}):(\d{2}).(\d{1})/
           duration = (($1.to_i * 60 + $2.to_i) * 60 + $3.to_i) * 10 + $4.to_i
         end
-        
-        if line =~ /time=(\d+).(\d+)/
+
+        if line =~ /time=(\d{2}):(\d{2}):(\d{2}).(\d{1})/
           if not duration.nil? and duration != 0
-            p = ($1.to_i * 10 + $2.to_i) * 100 / duration
+            p = (($1.to_i * 60 + $2.to_i) * 60 + $3.to_i) * 10 * 100 / duration
           else
             p = 0
           end
