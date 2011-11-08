@@ -92,7 +92,7 @@ module RVideo # :nodoc:
       if @output_file.nil?
         @output_file = options[:output_file]
       end
-      result = check_integrity
+      result = check_integrity if @output_file
       RVideo.logger.info("\nFinished task. Total errors: #{@errors.size}\n")
       @total_time = Time.now - t1
       result
