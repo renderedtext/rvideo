@@ -3,13 +3,13 @@ require File.dirname(__FILE__) + '/../spec_helper'
 module RVideo
   module Tools
   
-    describe MP3 do
+    describe Mp3 do
       before do
         setup_mp3_spec
       end
       
       it "should initialize with valid arguments" do
-        @mpegts_h264.class.should == MP3
+        @mpegts_h264.class.should == Mp3
       end
       
       it "should have the correct tool_command" do
@@ -32,5 +32,5 @@ end
 def setup_mp3_spec
   @options = {:input_file => "foo.mp4", :output_files => "foo-???.ts", :index_file => 'testa.m3u8'}
   @command = "MP3 -i $input_file$ -o $output_files$ -I $input_file$"
-  @mpegts_h264 = RVideo::Tools::MP3.new(@command, @options)
+  @mpegts_h264 = RVideo::Tools::Mp3.new(@command, @options)
 end

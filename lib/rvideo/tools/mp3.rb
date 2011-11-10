@@ -1,6 +1,6 @@
 module RVideo
   module Tools
-    class MP3
+    class Mp3
       include AbstractTool::InstanceMethods
       attr_reader :raw_metadata
       
