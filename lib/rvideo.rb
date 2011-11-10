@@ -23,6 +23,7 @@ require 'rvideo/tools/segmenter'
 require 'rvideo/tools/handbrakecli'
 require 'rvideo/tools/lame'
 require 'rvideo/tools/mpegtsh264'
+require 'rvideo/tools/mp3'
 
 TEMP_PATH   = File.expand_path(File.dirname(__FILE__) + '/../tmp')
 REPORT_PATH = File.expand_path(File.dirname(__FILE__) + '/../report')
