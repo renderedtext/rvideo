@@ -107,7 +107,7 @@ module RVideo # :nodoc:
     def handle_unknown_error(e)
       RVideo.logger.error "[ERROR] Unhandled RVideo exception: #{e.class} - #{e.message}"
       RVideo.logger.error e.backtrace.join("\n\t")
-      raise TranscoderError::UnknownError, "Unexpected RVideo error: #{e.message} (#{e.class})"
+      raise e
     end
 
     def check_input_file(input_file)
