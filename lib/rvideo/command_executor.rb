@@ -1,5 +1,13 @@
 require 'open4'
 
+begin
+  require 'system_timer'
+  MyTimer = SystemTimer
+rescue LoadError
+  require 'timeout'
+  MyTimer = Timeout
+end
+
 class IO
 
   def each_with_timeout(timeout, sep_string=$/)
@@ -40,7 +48,7 @@ class IO
   end
 
   def to timeout = nil
-    Timeout.timeout(timeout){ yield }
+    MyTimer.timeout(timeout){ yield }
   end
 
 end
