@@ -154,6 +154,12 @@ module RVideo # :nodoc:
       /(\n\s*)(built on.*)(\n)/.match(@raw_response)[2]
     end
     
+    # Returns the creation time for the file.
+    def creation_time
+      return nil unless valid?
+      /Metadata.*?creation_time.*?:{1}(.*?)$/m.match(@raw_metadata)[1]
+    end
+
     # Returns the container format for the file. Instead of returning a single
     # format, this may return a string of related formats.
     #
