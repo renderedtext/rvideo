@@ -384,7 +384,7 @@ module RVideo # :nodoc:
     
     # The height of the video in pixels.
     def height
-      if aspect_rotate?
+      if aspect_rotated?
         resolution_match[0].to_i
       else
         resolution_match[1].to_i
