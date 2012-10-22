@@ -375,21 +375,19 @@ module RVideo # :nodoc:
     
     # The width of the video in pixels.
     def width
-      return nil unless video?
       if aspect_rotated?
-        video_match[6].to_i
+        resolution_match[1].to_i
       else
-        video_match[5].to_i
+        resolution_match[0].to_i
       end
     end
     
     # The height of the video in pixels.
     def height
-      return nil unless video?
-      if aspect_rotated?
-        video_match[5].to_i
+      if aspect_rotate?
+        resolution_match[0].to_i
       else
-        video_match[6].to_i
+        resolution_match[1].to_i
       end
     end
     
@@ -472,6 +470,9 @@ module RVideo # :nodoc:
       /bitrate: ([0-9\.]+)\s*(.*)\s+/.match(@raw_metadata)
     end
     
+    def resolution_match
+      /(\d{2,})x(\d{2,}),/.match(@raw_metadata)
+    end
     ###
     # I am wondering how reliable it would be to simplify a lot 
     # of this regexp parsery by using split(/\s*,\s*/) - Seth
