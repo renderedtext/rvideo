@@ -203,7 +203,6 @@ module RVideo # :nodoc:
     end
     
     def ratio
-      return nil unless valid?
       width.to_f / height.to_f
     end
     
@@ -376,18 +375,18 @@ module RVideo # :nodoc:
     # The width of the video in pixels.
     def width
       if aspect_rotated?
-        resolution_match[1].to_i
+        resolution_match[2].to_i
       else
-        resolution_match[0].to_i
+        resolution_match[1].to_i
       end
     end
     
     # The height of the video in pixels.
     def height
       if aspect_rotated?
-        resolution_match[0].to_i
-      else
         resolution_match[1].to_i
+      else
+        resolution_match[2].to_i
       end
     end
     
