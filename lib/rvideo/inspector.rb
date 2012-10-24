@@ -470,7 +470,7 @@ module RVideo # :nodoc:
     end
     
     def resolution_match
-      /(\d{2,})x(\d{2,}),/.match(@raw_metadata)
+      /(\d{2,})x(\d{2,})[ ,]{1}/.match(@raw_metadata)
     end
     ###
     # I am wondering how reliable it would be to simplify a lot 
