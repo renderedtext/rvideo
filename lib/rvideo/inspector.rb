@@ -1,3 +1,5 @@
+require 'mini_exiftool'
+
 module RVideo # :nodoc:
   # To inspect a video or audio file, initialize an Inspector object.
   #
@@ -402,12 +404,9 @@ module RVideo # :nodoc:
     end
 
     def video_orientation
-      stdout=''
-      stderr=''
-      open4.spawn "qtrotate #{full_filename}", :stdout=> stdout, :timeout => 10, :stderr => stderr
-      @orientation ||= stdout.chomp.to_i
-    rescue Timeout::Error
-      0
+      return @video_orientation if defined? @video_orientation
+      movie = MiniExiftool.new(full_filename)
+      @video_orientation = movie.rotation
     rescue
       0
     end
@@ -470,7 +469,8 @@ module RVideo # :nodoc:
     end
 
     def resolution_match
-      /(\d{2,})x(\d{2,})[ ,]{1}/.match(@raw_metadata)
+      [nil, video_match[5],video_match[6]]
+      #/(\d{2,})x(\d{2,})[ ,]{1}/.match(@raw_metadata)
     end
     ###
     # I am wondering how reliable it would be to simplify a lot
@@ -500,7 +500,7 @@ module RVideo # :nodoc:
     FPS = 'fps(?:\(r\))?'
 
     VIDEO_MATCH_PATTERN = /
-      Stream\s*(\#[\d.]+)(?::[\d]+)?(?:[\(\[].+?[\)\]])?\s*       # stream id
+      Stream\s*(\#[\d.:]+)(?:[\(\[].+?[\)\]])?\s*       # stream id
       [,:]\s*
       (?:#{RATE}\s*#{FPS}[,:]\s*)?                                # frame rate, older builds
       Video:\s*

@@ -20,8 +20,8 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency('activesupport', [">= 0"])
   s.add_runtime_dependency('i18n', [">= 0"])
-  
-  s.add_runtime_dependency('open4', [">= 0"])  
+  s.add_runtime_dependency('mini_exiftool', [">= 0"])
+  s.add_runtime_dependency('open4', [">= 0"])
   s.add_development_dependency('rspec', [">= 0"])
   s.add_development_dependency('echoe', [">= 0"])
 

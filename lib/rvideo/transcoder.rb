@@ -88,7 +88,7 @@ module RVideo # :nodoc:
       else
         parse_and_execute(task, options)
       end
-      
+
       if @output_file.nil?
         @output_file = options[:output_file]
       end
@@ -143,7 +143,7 @@ module RVideo # :nodoc:
             progress_by_tools[c.object_id] = progress
             sum = progress_by_tools.values.inject(0) { |s,v| s += v }
             if commands_with_progress > 0
-              total_progress = sum / commands_with_progress
+              total_progress = sum.to_f / commands_with_progress
               yield(tool, total_progress) if total_progress != @prev_progress
               @prev_progress = total_progress
             end
@@ -155,8 +155,8 @@ module RVideo # :nodoc:
         executed_commands << tool
       end
     end
-  
-  
+
+
     def number_of_tools_supporting_progress(commands)
       n = 0
       commands.each do |c|
@@ -165,6 +165,6 @@ module RVideo # :nodoc:
       end
       n
     end
-  
+
   end
 end

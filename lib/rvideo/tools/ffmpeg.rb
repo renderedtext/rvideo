@@ -4,7 +4,7 @@ require 'active_support/core_ext/hash/indifferent_access'
 module RVideo
   module Tools
     class Ffmpeg
-      
+
       RESOLUTION_ABBREVIATIONS = {
         "sqcif"  => "128x96",
         "qcif"   => "176x144",
@@ -35,32 +35,32 @@ module RVideo
         "hd720"  => "1280x720",
         "hd1080" => "1920x1080"
       }
-      
+
       VALID_ASPECT_STRINGS = ["4:3", "16:9"]
       VALID_ASPECT_FLOATS  = [1.3333, 1.7777]
-      
-      # The flag used to set video bitrate has apparently changed between 
-      # different ffmpeg versions. In the latest builds -b is used. 
+
+      # The flag used to set video bitrate has apparently changed between
+      # different ffmpeg versions. In the latest builds -b is used.
       # In older builds it was -v which is now used to set verbosity of logging.
       DEFAULT_VIDEO_BIT_RATE_PARAMETER = "b"
       cattr_accessor :video_bit_rate_parameter
       self.video_bit_rate_parameter = DEFAULT_VIDEO_BIT_RATE_PARAMETER
-      
+
       include AbstractTool::InstanceMethods
-      
+
       attr_reader :frame, :q, :size, :time, :output_bitrate, :video_size, :audio_size, :header_size, :overhead, :psnr, :output_fps, :pid
-      
+
       def initialize(raw_command, options = {})
         @raw_command = raw_command
         @options = HashWithIndifferentAccess.new(options)
         @command = interpolate_variables(raw_command)
       end
-      
+
       # Not sure if this is needed anymore...
       def tool_command
         'ffmpeg'
       end
-      
+
       def format_deinterlace(params={})
         params[:deinterlace] ? "-deinterlace" : ""
       end
@@ -68,30 +68,30 @@ module RVideo
       def format_fps(params={})
         "-r #{params[:fps]}"
       end
-      
+
       def format_video_bit_rate(params = {})
         "-#{video_bit_rate_parameter} #{params[:video_bit_rate]}k"
       end
-      
+
       def format_video_bit_rate_tolerance(params = {})
         "-bt #{params[:video_bit_rate_tolerance]}k"
       end
-      
+
       def format_video_bit_rate_min(params = {})
         "-minrate #{params[:video_bit_rate_min]}k"
       end
-      
+
       def format_video_bit_rate_max(params = {})
         "-maxrate #{params[:video_bit_rate_max]}k"
       end
-      
+
       def format_video_quality(params={})
         bitrate = params[:video_bit_rate].nil? ? nil : params[:video_bit_rate]
-        
+
         params.merge! get_original_fps unless params[:fps]
-        
+
         factor  = params[:scale][:width].to_f * params[:scale][:height].to_f * params[:fps].to_f
-        
+
         case params[:video_quality]
         when 'low'
           bitrate ||= (factor / 12000).to_i
@@ -107,7 +107,7 @@ module RVideo
           "#{format_video_bit_rate params} -crf 18 -flags +loop -cmp +sad -partitions +parti4x4+partp8x8+partb8x8 -flags2 +mixed_refs -me full -subq 6 -trellis 1 -refs 3 -bf 3 -b_strategy 1 -coder 1 -me_range 16 -g 250 -keyint_min 25 -sc_threshold 40 -i_qfactor 0.71"
         end
       end
-      
+
       def format_resolution(params={})
         p = []
 
@@ -115,14 +115,14 @@ module RVideo
           params[:rotate] = original.video_orientation
           p << format_filter_rotation(params)
         end
-        
+
         p << format_filter_scale(params)
         p << format_filter_pad(params) if params.has_key?(:letterbox)
         p.compact!
-        
+
         %(-vf '#{p.join(',')}')
       end
-      
+
       def format_filter_rotation(params={})
         "transpose=#{params[:rotate].to_i / 90}"
       end
@@ -136,7 +136,7 @@ module RVideo
         ptb = ((params[:letterbox][:height] - params[:scale][:height]) / 2).to_i
         width = params[:letterbox][:width]
         heigth = params[:letterbox][:height]
-        
+
         if(plr > 0 || ptb > 0)
           "pad=#{width.to_i}:#{heigth.to_i}:#{plr.to_i}:#{ptb.to_i}"
         end
@@ -145,15 +145,15 @@ module RVideo
       def format_audio_channels(params={})
         "-ac #{params[:channels]}"
       end
-      
+
       def format_audio_bit_rate(params={})
         "-ab #{params[:bit_rate]}k"
       end
-      
+
       def format_audio_sample_rate(params={})
         "-ar #{params[:sample_rate]}"
       end
-      
+
       def do_execute_with_progress(command,&block)
         @raw_result = ''
         duration = 0
@@ -163,25 +163,25 @@ module RVideo
           @raw_result += line.to_s + "\r"
         end
       end
-      
+
       def execute_with_progress(&block)
         RVideo.logger.info("\nExecuting Command: #{@command}\n")
         do_execute_with_progress(@command, &block)
       rescue RVideo::CommandExecutor::ProcessHungError
         raise TranscoderError, "Transcoder hung."
-      end      
-      
+      end
+
       private
-      
+
       def parse_progress(line, duration)
-        
+
         if line =~ /Duration: (\d{2}):(\d{2}):(\d{2}).(\d{1})/
           duration = (($1.to_i * 60 + $2.to_i) * 60 + $3.to_i) * 10 + $4.to_i
         end
 
         if line =~ /time=(\d{2}):(\d{2}):(\d{2}).(\d{1})/
           if not duration.nil? and duration != 0
-            p = (($1.to_i * 60 + $2.to_i) * 60 + $3.to_i) * 10 * 100 / duration
+            p = ((($1.to_i * 60 + $2.to_i) * 60 + $3.to_i) * 10 * 100).to_f / duration
           else
             p = 0
           end
@@ -189,33 +189,33 @@ module RVideo
         end
         return [p, duration]
       end
-      
+
       def parse_result(result)
         if m = /Expected .+ for (.+) but found: (.+)/.match(result)
           raise TranscoderError::InvalidCommand, m.to_s
         end
-        
+
         if m = /Unable to find a suitable output format for.*$/.match(result)
           raise TranscoderError::InvalidCommand, m[0]
         end
-        
+
         if m = /Unknown encoder \'(.*)\'/.match(result)
           raise TranscoderError::InvalidFile, "Codec #{m[1]} not supported by this build of ffmpeg"
        end
-        
+
         if m = /could not find codec parameters/.match(result)
           raise TranscoderError::InvalidFile, "Codec not supported by this build of ffmpeg"
         end
-        
-        
+
+
         if m = /I\/O error occured\n(.*)$/.match(result)
           raise TranscoderError::InvalidFile, "I/O error: #{m[1].strip}"
         end
-        
+
         if m = /^(missingfile.avi): No such file or directory/.match(result)
           raise TranscoderError::InvalidFile, "No such file or directory: #{m[1].strip}"
         end
-          
+
         if m = /\n(.*)Unknown Format$/.match(result)
           raise TranscoderError::InvalidFile, "unknown format (#{m[1]})"
         end
@@ -223,20 +223,20 @@ module RVideo
         if m = /\nERROR.*/m.match(result)
           raise TranscoderError::InvalidFile, m[0]
         end
-        
+
         if m = /[(\S+) @ \d+x\d+]error, (.+?)/.match(result)
           raise TranscoderError::InvalidFile, "#{m[1]}: #{m[2]}"
         end
-        
+
         if result =~ /usage: ffmpeg/
           raise TranscoderError::InvalidCommand, "must pass a command to ffmpeg"
         end
-        
+
         if result =~ /Output file.*does not contain.*stream/
           raise TranscoderError, "Output file does not contain any video or audio streams."
         end
-        
-        if m = /Unsupported codec.*id=(.*)\).*for input stream\s*(.*)\s*/.match(result) 
+
+        if m = /Unsupported codec.*id=(.*)\).*for input stream\s*(.*)\s*/.match(result)
           case m[2]
           when original.audio_stream_id
             codec_type = "audio"
@@ -248,52 +248,52 @@ module RVideo
             codec_type = "video or audio"
             codec = "unknown"
           end
-          
+
           raise TranscoderError::InvalidFile, "Unsupported #{codec_type} codec: #{codec} (id=#{m[1]}, stream=#{m[2]})"
           #raise TranscoderError, "Codec #{m[1]} not supported (in stream #{m[2]})"
         end
-        
+
         # Could not open './spec/../config/../tmp/processed/1/kites-1.avi'
         if result =~ /Could not open .#{@output_file}.\Z/
           raise TranscoderError, "Could not write output file to #{@output_file}"
         end
-          
+
         full_details = /Press .* to stop.*?\n(.*)/m.match(result)
         raise TranscoderError, "Unexpected result details (#{result})" if full_details.nil?
         details = full_details[1].strip.gsub(/\s*\n\s*/," - ")
-        
+
         if details =~ /Could not write header/
           raise TranscoderError, details
         end
-        
-        #frame=  584 q=6.0 Lsize=     708kB time=19.5 bitrate= 297.8kbits/s    
+
+        #frame=  584 q=6.0 Lsize=     708kB time=19.5 bitrate= 297.8kbits/s
         #video:49kB audio:153kB global headers:0kB muxing overhead 250.444444%
-        
-        #frame= 4126 q=31.0 Lsize=    5917kB time=69.1 bitrate= 702.0kbits/s    
+
+        #frame= 4126 q=31.0 Lsize=    5917kB time=69.1 bitrate= 702.0kbits/s
         #video:2417kB audio:540kB global headers:0kB muxing overhead 100.140277%
-        
+
         #frame=  273 fps= 31 q=10.0 Lsize=     398kB time=5.9 bitrate= 551.8kbits/s
         #video:284kB audio:92kB global headers:0kB muxing overhead 5.723981%
-        
+
         #mdb:94, lastbuf:0 skipping granule 0
-        #size=    1080kB time=69.1 bitrate= 128.0kbits /s    
+        #size=    1080kB time=69.1 bitrate= 128.0kbits /s
         #video:0kB audio:1080kB global headers:0kB muxing overhead 0.002893%
-        
+
         #size=      80kB time=5.1 bitrate= 128.0kbits/s    ^Msize=     162kB time=10.3 bitrate= 128.0kbits/s    ^Msize=     241kB time=15.4 bitrate= 128.0kbits/s    ^Msize=     329kB time=21.1 bitrate= 128.0kbits/s    ^Msize=     413kB time=26.4 bitrate= 128.0kbits/s    ^Msize=     506kB time=32.4 bitrate= 128.0kbits/s    ^Msize=     591kB time=37.8 bitrate= 128.0kbits/s    ^Msize=     674kB time=43.2 bitrate= 128.0kbits/s    ^Msize=     771kB time=49.4 bitrate= 128.0kbits/s    ^Msize=     851kB time=54.5 bitrate= 128.0kbits/s    ^Msize=     932kB time=59.6 bitrate= 128.0kbits/s    ^Msize=    1015kB time=64.9 bitrate= 128.0kbits/s    ^Msize=    1094kB time=70.0 bitrate= 128.0kbits/s    ^Msize=    1175kB time=75.2 bitrate= 128.0kbits/s    ^Msize=    1244kB time=79.6 bitrate= 128.0kbits/s    ^Msize=    1335kB time=85.4 bitrate= 128.0kbits/s    ^Msize=    1417kB time=90.7 bitrate= 128.0kbits/s    ^Msize=    1508kB time=96.5 bitrate= 128.0kbits/s    ^Msize=    1589kB time=101.7 bitrate= 128.0kbits/s    ^Msize=    1671kB time=106.9 bitrate= 128.0kbits/s    ^Msize=    1711kB time=109.5 bitrate= 128.0kbits/s - video:0kB audio:1711kB global headers:0kB muxing overhead 0.001826%
-        
+
         #mdb:14, lastbuf:0 skipping granule 0 - overread, skip -5 enddists: -2 -2 - overread, skip -5 enddists: -2 -2 - size=      90kB time=5.7 bitrate= 128.0kbits/s    \nsize=     189kB time=12.1 bitrate= 128.0kbits/s
-        
+
         #size=      59kB time=20.2 bitrate=  24.0kbits/s    \nsize=     139kB time=47.4 bitrate=  24.0kbits/s    \nsize=     224kB time=76.5 bitrate=  24.0kbits/s    \nsize=     304kB time=103.7 bitrate=  24.0kbits/s    \nsi
-        
-        #mdb:14, lastbuf:0 skipping granule 0 - overread, skip -5 enddists: -2 -2 - overread, skip -5 enddists: -2 -2 - size=      81kB time=10.3 bitrate=  64.0kbits/s    \nsize=     153kB time=19.6 bitrate=  64.0kbits/s 
-        
+
+        #mdb:14, lastbuf:0 skipping granule 0 - overread, skip -5 enddists: -2 -2 - overread, skip -5 enddists: -2 -2 - size=      81kB time=10.3 bitrate=  64.0kbits/s    \nsize=     153kB time=19.6 bitrate=  64.0kbits/s
+
         #size=      65kB time=4.1 bitrate= 128.1kbits/s    \nsize=     119kB time=7.6 bitrate= 128.0kbits/s    \nsize=     188kB time=12.0 bitrate= 128.0kbits/s    \nsize=     268kB time=17.1 bitrate= 128.0kbits/s    \nsize=
-        
+
         #Error while decoding stream #0.1     [mpeg4aac @ 0xb7d089f0]faac: frame decoding failed: Gain control not yet implementedError while decoding stream #0.1frame= 2143 fps= 83 q=4.0 size=    4476kB time=71.3 bitrate= 514.5kbits/s    ^M[mpeg4aac @ 0xb7d089f0]faac: frame decoding failed: Gain control not yet implementedError while decoding stream #0.1
-        
+
         # NOTE: had to remove "\s" from "\s.*L.*size=" from this regexp below.
         # Not sure why. Unit tests were succeeding, but hand tests weren't.
-        if details =~ /video:/ 
+        if details =~ /video:/
           #success = /^frame=\s*(\S*)\s*q=(\S*).*L.*size=\s*(\S*)\s*time=\s*(\S*)\s*bitrate=\s*(\S*)\s*/m.match(details)
           @frame          = details[/frame=\s*(\S*)/, 1]
           @output_fps     = details[/fps=\s*(\S*)/, 1]
@@ -301,23 +301,23 @@ module RVideo
           @size           = details[/size=\s*(\S*)/, 1]
           @time           = details[/time=\s*(\S*)/, 1]
           @output_bitrate = details[/bitrate=\s*(\S*)/, 1]
-          
+
           @video_size     = details[/video:\s*(\S*)/, 1]
           @audio_size     = details[/audio:\s*(\S*)/, 1]
           @header_size    = details[/headers:\s*(\S*)/, 1]
           @overhead       = details[/overhead[:]*\s*(\S*)/, 1]
-          
+
           psnr_match = /PSNR=(.*)\s*size=/.match(details)
           @psnr = psnr_match[1].strip if psnr_match
           return true
         end
-        
+
         #[mp3 @ 0x54340c]flv doesnt support that sample rate, choose from (44100, 22050, 11025)
         #Could not write header for output file #0 (incorrect codec parameters ?)
-        
+
         raise TranscoderError::UnexpectedResult, details
       end
-      
+
     end
   end
 end
