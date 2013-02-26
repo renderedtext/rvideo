@@ -483,12 +483,12 @@ module RVideo # :nodoc:
     PAR_DAR = '(?:\s*\[?(?:PAR\s*(\d+:\d+))?\s*(?:DAR\s*(\d+:\d+))?\]?)?'
 
     AUDIO_MATCH_PATTERN = /
-      Stream\s+(.*?)[,:\(\[].*?\s*
+      Stream\s*(\#[\d.:]+)(?:[\(\[].+?[\)\]])?:\s*
       Audio:\s+
       #{VAL}#{SEP}           # codec
       #{RATE}\s+(\w*)#{SEP}? # sample rate
       #{VAL}#{SEP}?          # channels
-      (?:s(\d+)#{SEP}?)?     # audio sample bit depth
+      (?:s#{VAL}#{SEP}?)?     # andudio sample bit depth
       (?:(\d+)\s+(\S+))?     # audio bit rate
     /x
 
